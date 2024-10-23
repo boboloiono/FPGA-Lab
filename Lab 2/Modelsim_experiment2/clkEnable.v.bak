@@ -1,0 +1,15 @@
+// created 17.07.2018 by Cecilia Hoeffler
+// template for experiment 2
+//you should be able to reduce the frequency of the clock with this module
+
+
+module clkEnable(
+			input clock_5,
+			input reset,
+			output enable_out
+			);
+							
+			parameter freq_divider = 5; 
+			reg enable;
+						
+endmodule

@@ -1,0 +1,574 @@
+# Reading C:/intelFPGA_lite/17.0/modelsim_ase/tcl/vsim/pref.tcl
+# Project file C:/ECE551/Final Project/ProjectNONVG/Project/Mz.mpf was not found.
+# Unable to open project.
+# Loading project FPFG_lab2
+# reading C:/intelFPGA_lite/17.0/modelsim_ase/win32aloem/../modelsim.ini
+# Loading project FPGA_Lab2
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v failed with 1 errors.
+# Compile of updown_counter.v failed with 3 errors.
+# 5 compiles, 2 failed with 4 errors.
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v failed with 1 errors.
+# Compile of updown_counter.v failed with 3 errors.
+# 5 compiles, 2 failed with 4 errors.
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v failed with 1 errors.
+# Compile of updown_counter.v failed with 3 errors.
+# 5 compiles, 2 failed with 4 errors.
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v was successful.
+# Compile of updown_counter.v failed with 3 errors.
+# 5 compiles, 1 failed with 3 errors.
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v was successful.
+# Compile of updown_counter.v failed with 3 errors.
+# 5 compiles, 1 failed with 3 errors.
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v was successful.
+# Compile of updown_counter.v failed with 3 errors.
+# 5 compiles, 1 failed with 3 errors.
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v was successful.
+# Compile of updown_counter.v was successful.
+# 5 compiles, 0 failed with no errors.
+vsim -gui work.tb_top
+# vsim -gui work.tb_top 
+# Start time: 17:25:19 on Oct 22,2024
+# Loading work.tb_top
+# Loading work.top
+# Loading work.clkEnable
+# Loading work.updown_counter
+# Loading work.pll
+# ** Error (suppressible): (vsim-3009) [TSCALE] - Module 'tb_top' does not have a timeunit/timeprecision specification in effect, but other modules do.
+#    Time: 0 ps  Iteration: 0  Instance: /tb_top/DUT/pll File: C:/intelFPGA_lite/Lab 2/experiment2/pll.v
+# ** Error: (vsim-3033) C:/intelFPGA_lite/Lab 2/experiment2/pll.v(58): Instantiation of 'altpll' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /tb_top/DUT/pll File: C:/intelFPGA_lite/Lab 2/experiment2/pll.v
+#         Searched libraries:
+#             C:/intelFPGA_lite/Lab 2/experiment2/work
+# Error loading design
+# End time: 17:25:19 on Oct 22,2024, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v was successful.
+# Compile of updown_counter.v was successful.
+# 5 compiles, 0 failed with no errors.
+vsim -gui work.tb_top
+# vsim -gui work.tb_top 
+# Start time: 17:27:29 on Oct 22,2024
+# Loading work.tb_top
+# Loading work.top
+# Loading work.clkEnable
+# Loading work.updown_counter
+# ** Error: (vsim-3063) C:/intelFPGA_lite/Lab 2/experiment2/top.v(22): Port 'LED' not found in the connected module (5th connection).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_top/DUT/counter File: C:/intelFPGA_lite/Lab 2/experiment2/updown_counter.v
+# Error loading design
+# End time: 17:27:29 on Oct 22,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v was successful.
+# Compile of updown_counter.v was successful.
+# 5 compiles, 0 failed with no errors.
+vsim -gui work.tb_top
+# vsim -gui work.tb_top 
+# Start time: 17:31:19 on Oct 22,2024
+# Loading work.tb_top
+# Loading work.top
+# Loading work.clkEnable
+# Loading work.updown_counter
+add wave -position insertpoint  \
+sim:/tb_top/LEDs \
+sim:/tb_top/clock \
+sim:/tb_top/rst \
+sim:/tb_top/udc
+run -all
+#                    0 << Starting the Simulation >>
+#                  620 << Reset >>
+quit -sim
+# End time: 17:36:12 on Oct 22,2024, Elapsed time: 0:04:53
+# Errors: 0, Warnings: 0
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v was successful.
+# Compile of updown_counter.v was successful.
+# 5 compiles, 0 failed with no errors.
+vsim -gui work.tb_top
+# vsim -gui work.tb_top 
+# Start time: 17:37:26 on Oct 22,2024
+# Loading work.tb_top
+# Loading work.top
+# Loading work.clkEnable
+# Loading work.updown_counter
+run -all
+#                    0 << Starting the Simulation >>
+#                  620 << Reset >>
+# Break key hit
+# Simulation stop requested.
+add wave -position insertpoint  \
+sim:/tb_top/clock \
+sim:/tb_top/LEDs \
+sim:/tb_top/rst \
+sim:/tb_top/udc
+run -all
+# Break key hit
+# Break in Module tb_top at C:/intelFPGA_lite/Lab 2/experiment2/tb_top.v line 25
+quit -sim
+# End time: 17:38:46 on Oct 22,2024, Elapsed time: 0:01:20
+# Errors: 0, Warnings: 0
+vsim -gui work.tb_top
+# vsim -gui work.tb_top 
+# Start time: 17:38:54 on Oct 22,2024
+# Loading work.tb_top
+# Loading work.top
+# Loading work.clkEnable
+# Loading work.updown_counter
+add wave -position insertpoint  \
+sim:/tb_top/LEDs \
+sim:/tb_top/clock \
+sim:/tb_top/rst \
+sim:/tb_top/udc
+run -all
+#                    0 << Starting the Simulation >>
+#                  620 << Reset >>
+quit -sim
+# End time: 17:41:15 on Oct 22,2024, Elapsed time: 0:02:21
+# Errors: 0, Warnings: 0
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v was successful.
+# Compile of updown_counter.v was successful.
+# 5 compiles, 0 failed with no errors.
+vsim -gui work.tb_top
+# vsim -gui work.tb_top 
+# Start time: 17:41:26 on Oct 22,2024
+# Loading work.tb_top
+# Loading work.top
+# Loading work.clkEnable
+# Loading work.updown_counter
+run -all
+#                    0 << Starting the Simulation >>
+#                  320 << Reset >>
+add wave -position insertpoint  \
+sim:/tb_top/LEDs \
+sim:/tb_top/clock \
+sim:/tb_top/rst \
+sim:/tb_top/udc
+# Break key hit
+# Simulation stop requested.
+restart -f
+run -all
+#                    0 << Starting the Simulation >>
+#                  320 << Reset >>
+restart -f
+run -all
+# GetModuleFileName: 找不到指定的模組。
+# 
+# 
+#                    0 << Starting the Simulation >>
+#                  320 << Reset >>
+quit -sim
+# End time: 17:46:22 on Oct 22,2024, Elapsed time: 0:04:56
+# Errors: 0, Warnings: 0
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v was successful.
+# Compile of updown_counter.v was successful.
+# 5 compiles, 0 failed with no errors.
+vsim -gui work.tb_top
+# vsim -gui work.tb_top 
+# Start time: 17:47:07 on Oct 22,2024
+# Loading work.tb_top
+# Loading work.top
+# Loading work.clkEnable
+# Loading work.updown_counter
+add wave -position insertpoint  \
+sim:/tb_top/LEDs \
+sim:/tb_top/clock \
+sim:/tb_top/rst \
+sim:/tb_top/udc
+run -all
+#                    0 << Starting the Simulation >>
+# Break key hit
+quit -sim
+# End time: 17:48:34 on Oct 22,2024, Elapsed time: 0:01:27
+# Errors: 0, Warnings: 0
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v was successful.
+# Compile of updown_counter.v was successful.
+# 5 compiles, 0 failed with no errors.
+vsim -gui work.tb_top
+# vsim -gui work.tb_top 
+# Start time: 17:48:41 on Oct 22,2024
+# Loading work.tb_top
+# Loading work.top
+# Loading work.clkEnable
+# Loading work.updown_counter
+add wave -position insertpoint  \
+sim:/tb_top/LEDs \
+sim:/tb_top/clock \
+sim:/tb_top/rst \
+sim:/tb_top/udc
+run -all
+#                    0 << Starting the Simulation >>
+# Break key hit
+# Break in Module tb_top at C:/intelFPGA_lite/Lab 2/experiment2/tb_top.v line 25
+quit -sim
+# End time: 17:52:02 on Oct 22,2024, Elapsed time: 0:03:21
+# Errors: 0, Warnings: 0
+# Compile of clkEnable.v was successful with warnings.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v was successful.
+# Compile of updown_counter.v was successful.
+# 5 compiles, 0 failed with no errors.
+vsim -gui work.tb_top
+# vsim -gui work.tb_top 
+# Start time: 17:52:12 on Oct 22,2024
+# Loading work.tb_top
+# Loading work.top
+# Loading work.clkEnable
+# Loading work.updown_counter
+add wave -position insertpoint  \
+sim:/tb_top/LEDs \
+sim:/tb_top/clock \
+sim:/tb_top/rst \
+sim:/tb_top/udc
+run -all
+#                    0 << Starting the Simulation >>
+add wave -position insertpoint  \
+sim:/tb_top/DUT/enb/clock_5 \
+sim:/tb_top/DUT/enb/count \
+sim:/tb_top/DUT/enb/enable \
+sim:/tb_top/DUT/enb/enable_out \
+sim:/tb_top/DUT/enb/freq_divider \
+sim:/tb_top/DUT/enb/reset
+quit -sim
+# End time: 17:53:15 on Oct 22,2024, Elapsed time: 0:01:03
+# Errors: 0, Warnings: 0
+# Load canceled
+# Break key hit
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v was successful.
+# Compile of updown_counter.v was successful.
+# 5 compiles, 0 failed with no errors.
+vsim -gui work.tb_top
+# vsim -gui work.tb_top 
+# Start time: 17:54:24 on Oct 22,2024
+# Loading work.tb_top
+# Loading work.top
+# Loading work.clkEnable
+# Loading work.updown_counter
+add wave -position insertpoint  \
+sim:/tb_top/LEDs \
+sim:/tb_top/clock \
+sim:/tb_top/rst \
+sim:/tb_top/udc
+add wave -position insertpoint  \
+sim:/tb_top/DUT/LED \
+sim:/tb_top/DUT/clock_5 \
+sim:/tb_top/DUT/count \
+sim:/tb_top/DUT/enable \
+sim:/tb_top/DUT/key1 \
+sim:/tb_top/DUT/reset
+run -all
+#                    0 << Starting the Simulation >>
+# Break key hit
+# Simulation stop requested.
+quit -sim
+# End time: 18:02:11 on Oct 22,2024, Elapsed time: 0:07:47
+# Errors: 0, Warnings: 0
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v was successful.
+# Compile of updown_counter.v was successful.
+# 5 compiles, 0 failed with no errors.
+vsim -gui work.tb_top
+# vsim -gui work.tb_top 
+# Start time: 18:02:17 on Oct 22,2024
+# Loading work.tb_top
+# Loading work.top
+# Loading work.clkEnable
+# Loading work.updown_counter
+add wave -position insertpoint  \
+sim:/tb_top/LEDs \
+sim:/tb_top/clock \
+sim:/tb_top/rst \
+sim:/tb_top/udc
+add wave -position insertpoint  \
+sim:/tb_top/DUT/enb/clock_5 \
+sim:/tb_top/DUT/enb/count \
+sim:/tb_top/DUT/enb/enable \
+sim:/tb_top/DUT/enb/enable_out \
+sim:/tb_top/DUT/enb/freq_divider \
+sim:/tb_top/DUT/enb/reset
+add wave -position insertpoint sim:/tb_top/DUT/counter/*
+run -all
+#                    0 << Starting the Simulation >>
+quit -sim
+# End time: 18:06:11 on Oct 22,2024, Elapsed time: 0:03:54
+# Errors: 0, Warnings: 0
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v was successful.
+# Compile of updown_counter.v was successful.
+# 5 compiles, 0 failed with no errors.
+vsim -gui work.tb_top
+# vsim -gui work.tb_top 
+# Start time: 18:06:20 on Oct 22,2024
+# Loading work.tb_top
+# Loading work.top
+# Loading work.clkEnable
+# Loading work.updown_counter
+add wave -position insertpoint  \
+sim:/tb_top/LEDs \
+sim:/tb_top/clock \
+sim:/tb_top/rst \
+sim:/tb_top/udc
+add wave -position insertpoint sim:/tb_top/DUT/*
+run -all
+#                    0 << Starting the Simulation >>
+quit -sim
+# End time: 18:07:17 on Oct 22,2024, Elapsed time: 0:00:57
+# Errors: 0, Warnings: 0
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v was successful.
+# Compile of updown_counter.v was successful.
+# 5 compiles, 0 failed with no errors.
+vsim -gui work.tb_top
+# vsim -gui work.tb_top 
+# Start time: 18:07:22 on Oct 22,2024
+# Loading work.tb_top
+# Loading work.top
+# Loading work.clkEnable
+# Loading work.updown_counter
+run -all
+#                    0 << Starting the Simulation >>
+add wave -position insertpoint  \
+sim:/tb_top/LEDs \
+sim:/tb_top/clock \
+sim:/tb_top/rst \
+sim:/tb_top/udc
+add wave -position insertpoint sim:/tb_top/DUT/*
+run -all
+# Break key hit
+# Simulation stop requested.
+restart -f
+restart -f
+run -all
+#                    0 << Starting the Simulation >>
+# Break key hit
+# Break in Module tb_top at C:/intelFPGA_lite/Lab 2/experiment2/tb_top.v line 25
+quit -sim
+# End time: 18:09:09 on Oct 22,2024, Elapsed time: 0:01:47
+# Errors: 0, Warnings: 0
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v was successful.
+# Compile of updown_counter.v was successful.
+# 5 compiles, 0 failed with no errors.
+vsim -gui work.tb_top
+# vsim -gui work.tb_top 
+# Start time: 18:09:15 on Oct 22,2024
+# Loading work.tb_top
+# Loading work.top
+# Loading work.clkEnable
+# Loading work.updown_counter
+add wave -position insertpoint sim:/tb_top/DUT/*
+run -all
+#                    0 << Starting the Simulation >>
+quit -sim
+# End time: 18:09:59 on Oct 22,2024, Elapsed time: 0:00:44
+# Errors: 0, Warnings: 0
+# Break key hit
+# Break key hit
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v was successful.
+# Compile of updown_counter.v was successful.
+# 5 compiles, 0 failed with no errors.
+vsim -gui work.tb_top
+# vsim -gui work.tb_top 
+# Start time: 18:10:18 on Oct 22,2024
+# Loading work.tb_top
+# Loading work.top
+# Loading work.clkEnable
+# Loading work.updown_counter
+add wave -position insertpoint  \
+sim:/tb_top/LEDs \
+sim:/tb_top/clock \
+sim:/tb_top/rst \
+sim:/tb_top/udc
+add wave -position insertpoint sim:/tb_top/DUT/*
+run -all
+#                    0 << Starting the Simulation >>
+# Break key hit
+# Simulation stop requested.
+quit -sim
+# End time: 18:11:46 on Oct 22,2024, Elapsed time: 0:01:28
+# Errors: 0, Warnings: 0
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v was successful.
+# Compile of updown_counter.v was successful.
+# 5 compiles, 0 failed with no errors.
+vsim -gui work.tb_top
+# vsim -gui work.tb_top 
+# Start time: 18:11:56 on Oct 22,2024
+# Loading work.tb_top
+# Loading work.top
+# Loading work.clkEnable
+# Loading work.updown_counter
+add wave -position insertpoint  \
+sim:/tb_top/LEDs \
+sim:/tb_top/clock \
+sim:/tb_top/rst \
+sim:/tb_top/udc
+add wave -position insertpoint sim:/tb_top/DUT/*
+run -all
+#                    0 << Starting the Simulation >>
+# Break key hit
+# Break in Module tb_top at C:/intelFPGA_lite/Lab 2/experiment2/tb_top.v line 25
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+quit -sim
+# End time: 18:13:40 on Oct 22,2024, Elapsed time: 0:01:44
+# Errors: 13, Warnings: 1
+# Break key hit
+# Break key hit
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v was successful.
+# Compile of updown_counter.v was successful.
+# 5 compiles, 0 failed with no errors.
+vsim -gui work.tb_top
+# vsim -gui work.tb_top 
+# Start time: 18:14:04 on Oct 22,2024
+# Loading work.tb_top
+# Loading work.top
+# Loading work.clkEnable
+# Loading work.updown_counter
+add wave -position insertpoint sim:/tb_top/DUT/*
+run -all
+#                    0 << Starting the Simulation >>
+quit -sim
+# End time: 18:16:15 on Oct 22,2024, Elapsed time: 0:02:11
+# Errors: 0, Warnings: 0
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v was successful.
+# Compile of updown_counter.v was successful.
+# 5 compiles, 0 failed with no errors.
+vsim -gui work.tb_top
+# vsim -gui work.tb_top 
+# Start time: 18:16:21 on Oct 22,2024
+# Loading work.tb_top
+# Loading work.top
+# Loading work.clkEnable
+# Loading work.updown_counter
+add wave -position insertpoint  \
+sim:/tb_top/LEDs \
+sim:/tb_top/clock \
+sim:/tb_top/rst \
+sim:/tb_top/udc
+add wave -position insertpoint sim:/tb_top/DUT/*
+run -all
+#                    0 << Starting the Simulation >>
+# Break key hit
+# Simulation stop requested.
+quit -sim
+# End time: 18:18:02 on Oct 22,2024, Elapsed time: 0:01:41
+# Errors: 0, Warnings: 0
+# Compile of clkEnable.v was successful.
+# Compile of pll.v was successful.
+# Compile of tb_top.v was successful.
+# Compile of top.v was successful.
+# Compile of updown_counter.v was successful.
+# 5 compiles, 0 failed with no errors.
+vsim -gui work.tb_top
+# vsim -gui work.tb_top 
+# Start time: 18:18:55 on Oct 22,2024
+# Loading work.tb_top
+# Loading work.top
+# Loading work.clkEnable
+# Loading work.updown_counter
+add wave -position insertpoint  \
+sim:/tb_top/LEDs \
+sim:/tb_top/clock \
+sim:/tb_top/rst \
+sim:/tb_top/udc
+add wave -position insertpoint sim:/tb_top/DUT/*
+run -all
+#                    0 << Starting the Simulation >>
+# Break key hit
+# Simulation stop requested.
+quit -sim
+# End time: 18:22:52 on Oct 22,2024, Elapsed time: 0:03:57
+# Errors: 0, Warnings: 0
+vsim -gui work.tb_top
+# vsim -gui work.tb_top 
+# Start time: 18:22:59 on Oct 22,2024
+# Loading work.tb_top
+# Loading work.top
+# Loading work.clkEnable
+# Loading work.updown_counter
+add wave -position insertpoint  \
+sim:/tb_top/LEDs \
+sim:/tb_top/clock \
+sim:/tb_top/rst \
+sim:/tb_top/udc
+add wave -position insertpoint  \
+sim:/tb_top/DUT/LED \
+sim:/tb_top/DUT/clock_5 \
+sim:/tb_top/DUT/enable \
+sim:/tb_top/DUT/key1 \
+sim:/tb_top/DUT/reset
+run -all
+#                    0 << Starting the Simulation >>
+# End time: 21:57:14 on Oct 22,2024, Elapsed time: 3:34:15
+# Errors: 0, Warnings: 0

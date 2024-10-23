@@ -1,0 +1,21 @@
+﻿// created 17.07.2018 by Cecilia Hoeffler
+// template for experiment 2
+//Up-Down- Counter, you should be able to control the LEDs via the key[0] and key[1]
+
+module updown_counter(
+
+input up_down, // if up_down is ‘1’ then it counts up , else if ‘0’ it counts down
+
+input clk,
+
+input enable,
+input reset,
+
+
+output [7:0]count_out
+
+);
+
+
+endmodule
+			
