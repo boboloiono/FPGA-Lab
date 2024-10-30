@@ -1,0 +1,59 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA/20.1
+vtb_timeAndDateClock
+Z0 !s110 1730240761
+!i10b 1
+!s100 j6Ti0:9I>aHZ60?RhPiOE2
+Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IFZHA?0aMAX`FS?e13kDjV3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z3 dC:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment3
+w1730220319
+8C:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment3/tb_timeAndDateClock.v
+FC:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment3/tb_timeAndDateClock.v
+!i122 37
+L0 3 106
+Z4 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z5 !s108 1730240761.000000
+!s107 C:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment3/tb_timeAndDateClock.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment3/tb_timeAndDateClock.v|
+!i113 1
+Z6 o-work work
+Z7 tCvgOpt 0
+ntb_time@and@date@clock
+vtimeAndDateClock
+R0
+!i10b 1
+!s100 `MkHi9Zzm]FF_8Dcf9S`Y1
+R1
+Id51<OaO?CZFFO`PkTbV7o2
+R2
+R3
+w1730220448
+8C:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment3/timeAndDateClock.v
+FC:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment3/timeAndDateClock.v
+!i122 38
+L0 18 112
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment3/timeAndDateClock.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment3/timeAndDateClock.v|
+!i113 1
+R6
+R7
+ntime@and@date@clock

@@ -1,0 +1,16 @@
+# Compile of tb_timeAndDateClock.v was successful.
+# Compile of timeAndDateClock.v was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.tb_timeAndDateClock
+# vsim -gui work.tb_timeAndDateClock 
+# Start time: 23:26:06 on Oct 29,2024
+# Loading work.tb_timeAndDateClock
+# Loading work.timeAndDateClock
+add wave -position insertpoint sim:/tb_timeAndDateClock/DUT/*
+run -all
+# ** Note: $finish    : C:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment3/tb_timeAndDateClock.v(105)
+#    Time: 15700 ns  Iteration: 0  Instance: /tb_timeAndDateClock
+# 1
+# Break in Module tb_timeAndDateClock at C:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment3/tb_timeAndDateClock.v line 105
+# End time: 23:28:51 on Oct 29,2024, Elapsed time: 0:02:45
+# Errors: 0, Warnings: 2
