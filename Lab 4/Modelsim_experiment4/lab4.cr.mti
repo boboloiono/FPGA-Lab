@@ -1,0 +1,15 @@
+{C:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment4/tb_dcf77signal.v} {1 {vlog -work work -stats=none {C:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment4/tb_dcf77signal.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module tb_dcf77signal
+
+Top level modules:
+	tb_dcf77signal
+
+} {} {}} {C:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment4/GenClockDCF.v} {1 {vlog -work work -stats=none {C:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment4/GenClockDCF.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module GenClockDCF
+
+Top level modules:
+	GenClockDCF
+
+} {} {}}

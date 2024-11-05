@@ -48,7 +48,7 @@ wire isLeapYear = ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
 always @(posedge clk, negedge nReset) begin
 	if(!nReset) begin
 		timeAndDate_Out <= 44'b0;
-	end else if(setTimeAndDate_in) begin
+	end else if(!setTimeAndDate_in) begin
 			timeAndDate_Out <= timeAndDate_In; // Load time and date from input
 	end else if(clkEn1Hz) begin	// add data by every second
 		// min + 1 when (second == 59)

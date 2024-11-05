@@ -1,0 +1,81 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment3
+vdcf77_decoder
+Z0 !s110 1730845825
+!i10b 1
+!s100 gCAFoKcXh[E@W9P80AA[O2
+Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I]=fi6Z3a94=ZRXX=PN8]d3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z3 dC:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment4
+w1730845694
+8C:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment4/dcf77_decoder.v
+FC:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment4/dcf77_decoder.v
+!i122 89
+L0 17 74
+Z4 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z5 !s108 1730845825.000000
+!s107 C:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment4/dcf77_decoder.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment4/dcf77_decoder.v|
+!i113 1
+Z6 o-work work
+Z7 tCvgOpt 0
+vGenClockDCF
+R0
+!i10b 1
+!s100 TIW[IR^7[E?]BPY7R2U?62
+R1
+IchmCKoCC_QWIWJz]iERW:2
+R2
+R3
+w1537866917
+8C:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment4/GenClockDCF.v
+FC:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment4/GenClockDCF.v
+!i122 90
+L0 18 176
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment4/GenClockDCF.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment4/GenClockDCF.v|
+!i113 1
+R6
+R7
+n@gen@clock@d@c@f
+vtb_dcf77signal
+R0
+!i10b 1
+!s100 4cSU9a9n`5>FK1?fdbZHN1
+R1
+IdeBD:O0G<:Pe^hP8Pzkac1
+R2
+R3
+w1538150833
+8C:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment4/tb_dcf77signal.v
+FC:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment4/tb_dcf77signal.v
+!i122 91
+L0 19 296
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment4/tb_dcf77signal.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/HP/sciebo - Lin, Pei Yu (FF34Q3@rwth-aachen.de)@rwth-aachen.sciebo.de/RWTH Course/FPGA Lab/Exp2-5/red FPGA/experiment4/tb_dcf77signal.v|
+!i113 1
+R6
+R7

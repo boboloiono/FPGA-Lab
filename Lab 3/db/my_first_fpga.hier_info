@@ -1,8 +1,11 @@
 |my_first_fpga
 LCD_Constract <= lcddriver:inst7.LCD_Contrast_out
 CLOCK_50 => pll:inst1.inclk0
-key[0] => clkGen_verilog:inst2.reset
-key[1] => timeAndDateClock:inst5.setTimeAndDate_in
+key[0] => lcddriver:inst7.nReset
+key[0] => LCDsteuerung:inst8.reset
+key[0] => clkGen_verilog:inst3.reset
+key[0] => timeAndDateClock:inst.nReset
+key[1] => timeAndDateClock:inst.setTimeAndDate_in
 LCD_Data_IO[0] <> lcddriver:inst7.LCD_Data_io[0]
 LCD_Data_IO[1] <> lcddriver:inst7.LCD_Data_io[1]
 LCD_Data_IO[2] <> lcddriver:inst7.LCD_Data_io[2]
@@ -11,9 +14,9 @@ LCD_Data_IO[4] <> lcddriver:inst7.LCD_Data_io[4]
 LCD_Data_IO[5] <> lcddriver:inst7.LCD_Data_io[5]
 LCD_Data_IO[6] <> lcddriver:inst7.LCD_Data_io[6]
 LCD_Data_IO[7] <> lcddriver:inst7.LCD_Data_io[7]
-LCD_out[0] <= <GND>
-LCD_out[1] <= <GND>
-LCD_out[2] <= <GND>
+LCD_out[0] <= lcddriver:inst7.LCD_RS_out
+LCD_out[1] <= lcddriver:inst7.LCD_RW_out
+LCD_out[2] <= lcddriver:inst7.LCD_Enable_out
 
 
 |my_first_fpga|lcddriver:inst7
@@ -1305,7 +1308,7 @@ cursor_blink_out <= cursor_blink_out~reg0.DB_MAX_OUTPUT_PORT_TYPE
 nLCD_Driver_ready_in => process_1.IN1
 
 
-|my_first_fpga|timeAndDateClock:inst5
+|my_first_fpga|timeAndDateClock:inst
 clk => timeAndDate_Out[0]~reg0.CLK
 clk => timeAndDate_Out[1]~reg0.CLK
 clk => timeAndDate_Out[2]~reg0.CLK
@@ -1570,9 +1573,71 @@ timeAndDate_Out[42] <= timeAndDate_Out[42]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 timeAndDate_Out[43] <= timeAndDate_Out[43]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|my_first_fpga|clkGen_verilog:inst2
+|my_first_fpga|clkGen_verilog:inst3
 clk10 => clk_enable~reg0.CLK
-reset => ~NO_FANOUT~
+clk10 => counter[0].CLK
+clk10 => counter[1].CLK
+clk10 => counter[2].CLK
+clk10 => counter[3].CLK
+clk10 => counter[4].CLK
+clk10 => counter[5].CLK
+clk10 => counter[6].CLK
+clk10 => counter[7].CLK
+clk10 => counter[8].CLK
+clk10 => counter[9].CLK
+clk10 => counter[10].CLK
+clk10 => counter[11].CLK
+clk10 => counter[12].CLK
+clk10 => counter[13].CLK
+clk10 => counter[14].CLK
+clk10 => counter[15].CLK
+clk10 => counter[16].CLK
+clk10 => counter[17].CLK
+clk10 => counter[18].CLK
+clk10 => counter[19].CLK
+clk10 => counter[20].CLK
+clk10 => counter[21].CLK
+clk10 => counter[22].CLK
+clk10 => counter[23].CLK
+clk10 => counter[24].CLK
+clk10 => counter[25].CLK
+clk10 => counter[26].CLK
+clk10 => counter[27].CLK
+clk10 => counter[28].CLK
+clk10 => counter[29].CLK
+clk10 => counter[30].CLK
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => clk_enable.OUTPUTSELECT
 resetValue_in[0] => ~NO_FANOUT~
 resetValue_in[1] => ~NO_FANOUT~
 resetValue_in[2] => ~NO_FANOUT~
@@ -1602,7 +1667,7 @@ resetValue_in[25] => ~NO_FANOUT~
 clk_enable <= clk_enable~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|my_first_fpga|setFixTimeAndDate:inst4
+|my_first_fpga|setFixTimeAndDate:inst2
 timeAndDate_Out[0] <= <VCC>
 timeAndDate_Out[1] <= <GND>
 timeAndDate_Out[2] <= <VCC>
@@ -1623,23 +1688,23 @@ timeAndDate_Out[16] <= <GND>
 timeAndDate_Out[17] <= <GND>
 timeAndDate_Out[18] <= <GND>
 timeAndDate_Out[19] <= <VCC>
-timeAndDate_Out[20] <= <VCC>
+timeAndDate_Out[20] <= <GND>
 timeAndDate_Out[21] <= <GND>
 timeAndDate_Out[22] <= <GND>
-timeAndDate_Out[23] <= <GND>
-timeAndDate_Out[24] <= <VCC>
+timeAndDate_Out[23] <= <VCC>
+timeAndDate_Out[24] <= <GND>
 timeAndDate_Out[25] <= <VCC>
-timeAndDate_Out[26] <= <VCC>
+timeAndDate_Out[26] <= <GND>
 timeAndDate_Out[27] <= <VCC>
-timeAndDate_Out[28] <= <VCC>
+timeAndDate_Out[28] <= <GND>
 timeAndDate_Out[29] <= <GND>
 timeAndDate_Out[30] <= <GND>
-timeAndDate_Out[31] <= <VCC>
+timeAndDate_Out[31] <= <GND>
 timeAndDate_Out[32] <= <GND>
 timeAndDate_Out[33] <= <GND>
 timeAndDate_Out[34] <= <VCC>
-timeAndDate_Out[35] <= <VCC>
-timeAndDate_Out[36] <= <GND>
+timeAndDate_Out[35] <= <GND>
+timeAndDate_Out[36] <= <VCC>
 timeAndDate_Out[37] <= <GND>
 timeAndDate_Out[38] <= <GND>
 timeAndDate_Out[39] <= <GND>

@@ -1,0 +1,155 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Intel and sold by Intel or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 16 16 280 256)
+	(text "lcddriver" (rect 5 0 39 12)(font "Arial" ))
+	(text "inst" (rect 8 224 20 236)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "Clk" (rect 0 0 12 12)(font "Arial" ))
+		(text "Clk" (rect 21 27 33 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32)(line_width 1))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "nReset" (rect 0 0 29 12)(font "Arial" ))
+		(text "nReset" (rect 21 43 50 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48)(line_width 1))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "Data_in[7..0]" (rect 0 0 50 12)(font "Arial" ))
+		(text "Data_in[7..0]" (rect 21 59 71 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 3))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "Data_Mode_in[1..0]" (rect 0 0 77 12)(font "Arial" ))
+		(text "Data_Mode_in[1..0]" (rect 21 75 98 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80)(line_width 3))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "Data_valid_in" (rect 0 0 54 12)(font "Arial" ))
+		(text "Data_valid_in" (rect 21 91 75 103)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 1))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "Addres_col_in[5..0]" (rect 0 0 79 12)(font "Arial" ))
+		(text "Addres_col_in[5..0]" (rect 21 107 100 119)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112)(line_width 3))
+	)
+	(port
+		(pt 0 128)
+		(input)
+		(text "Address_row_in" (rect 0 0 67 12)(font "Arial" ))
+		(text "Address_row_in" (rect 21 123 88 135)(font "Arial" ))
+		(line (pt 0 128)(pt 16 128)(line_width 1))
+	)
+	(port
+		(pt 0 144)
+		(input)
+		(text "Display_On_in" (rect 0 0 59 12)(font "Arial" ))
+		(text "Display_On_in" (rect 21 139 80 151)(font "Arial" ))
+		(line (pt 0 144)(pt 16 144)(line_width 1))
+	)
+	(port
+		(pt 0 160)
+		(input)
+		(text "Display_Shift_in[1..0]" (rect 0 0 83 12)(font "Arial" ))
+		(text "Display_Shift_in[1..0]" (rect 21 155 104 167)(font "Arial" ))
+		(line (pt 0 160)(pt 16 160)(line_width 3))
+	)
+	(port
+		(pt 0 176)
+		(input)
+		(text "Cursor_On_in" (rect 0 0 57 12)(font "Arial" ))
+		(text "Cursor_On_in" (rect 21 171 78 183)(font "Arial" ))
+		(line (pt 0 176)(pt 16 176)(line_width 1))
+	)
+	(port
+		(pt 0 192)
+		(input)
+		(text "Cursor_Blink_in" (rect 0 0 63 12)(font "Arial" ))
+		(text "Cursor_Blink_in" (rect 21 187 84 199)(font "Arial" ))
+		(line (pt 0 192)(pt 16 192)(line_width 1))
+	)
+	(port
+		(pt 264 32)
+		(output)
+		(text "nReady_out" (rect 0 0 50 12)(font "Arial" ))
+		(text "nReady_out" (rect 193 27 243 39)(font "Arial" ))
+		(line (pt 264 32)(pt 248 32)(line_width 1))
+	)
+	(port
+		(pt 264 64)
+		(output)
+		(text "LCD_Enable_out" (rect 0 0 70 12)(font "Arial" ))
+		(text "LCD_Enable_out" (rect 173 59 243 71)(font "Arial" ))
+		(line (pt 264 64)(pt 248 64)(line_width 1))
+	)
+	(port
+		(pt 264 80)
+		(output)
+		(text "LCD_Contrast_out" (rect 0 0 77 12)(font "Arial" ))
+		(text "LCD_Contrast_out" (rect 166 75 243 87)(font "Arial" ))
+		(line (pt 264 80)(pt 248 80)(line_width 1))
+	)
+	(port
+		(pt 264 96)
+		(output)
+		(text "LCD_RW_out" (rect 0 0 62 12)(font "Arial" ))
+		(text "LCD_RW_out" (rect 181 91 243 103)(font "Arial" ))
+		(line (pt 264 96)(pt 248 96)(line_width 1))
+	)
+	(port
+		(pt 264 112)
+		(output)
+		(text "LCD_RS_out" (rect 0 0 57 12)(font "Arial" ))
+		(text "LCD_RS_out" (rect 186 107 243 119)(font "Arial" ))
+		(line (pt 264 112)(pt 248 112)(line_width 1))
+	)
+	(port
+		(pt 264 48)
+		(bidir)
+		(text "LCD_Data_io[7..0]" (rect 0 0 76 12)(font "Arial" ))
+		(text "LCD_Data_io[7..0]" (rect 167 43 243 55)(font "Arial" ))
+		(line (pt 264 48)(pt 248 48)(line_width 3))
+	)
+	(parameter
+		"clk_freqeuncy"
+		"10000000"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(drawing
+		(rectangle (rect 16 16 248 224)(line_width 1))
+	)
+	(annotation_block (parameter)(rect 280 -64 380 16))
+)

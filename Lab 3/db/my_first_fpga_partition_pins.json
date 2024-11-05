@@ -2,7 +2,60 @@
 	"partitions" : [
 		{
 			"name" : "Top",
-			"pins" : []
+			"pins" : [
+				{
+					"name" : "LCD_out[2]",
+					"strict" : false
+				},
+				{
+					"name" : "LCD_out[1]",
+					"strict" : false
+				},
+				{
+					"name" : "LCD_out[0]",
+					"strict" : false
+				},
+				{
+					"name" : "LCD_Data_IO[7]",
+					"strict" : false
+				},
+				{
+					"name" : "LCD_Data_IO[6]",
+					"strict" : false
+				},
+				{
+					"name" : "LCD_Data_IO[5]",
+					"strict" : false
+				},
+				{
+					"name" : "LCD_Data_IO[4]",
+					"strict" : false
+				},
+				{
+					"name" : "LCD_Data_IO[3]",
+					"strict" : false
+				},
+				{
+					"name" : "LCD_Data_IO[2]",
+					"strict" : false
+				},
+				{
+					"name" : "LCD_Data_IO[1]",
+					"strict" : false
+				},
+				{
+					"name" : "LCD_Data_IO[0]",
+					"strict" : false
+				},
+				{
+					"name" : "key[0]",
+					"strict" : false
+				},
+				{
+					"name" : "key[1]",
+					"strict" : false
+				}
+			]
 		}
 	]
 }

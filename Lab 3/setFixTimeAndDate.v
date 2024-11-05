@@ -19,6 +19,24 @@ module setFixTimeAndDate(output reg[43:0] timeAndDate_Out);
 
 initial
 begin 
+	// leap year
+  timeAndDate_Out[3:0]   <= 4'b0101;   // lower digit of second is 5
+  timeAndDate_Out[6:4]   <= 3'b100;    // higher digit of second is 4
+  timeAndDate_Out[10:7]  <= 4'b1001;   // lower digit of minute is 9
+  timeAndDate_Out[13:11] <= 3'b101;    // higher digit of minute is 5
+  timeAndDate_Out[17:14] <= 4'b0011;   // lower digit of hour is 3
+  timeAndDate_Out[19:18] <= 2'b10;     // higher digit of hour is 2
+  timeAndDate_Out[23:20] <= 4'b1000;   // lower digit of day is 8
+  timeAndDate_Out[25:24] <= 2'b10;     // higher digit of day is 2
+  timeAndDate_Out[29:26] <= 4'b0010;   // lower digit of month is 2
+  timeAndDate_Out[30]    <= 1'b0;      // higher digit of month is 0
+  timeAndDate_Out[34:31] <= 4'b1000;   // lower digit of year is 4
+  timeAndDate_Out[38:35] <= 4'b0010;   // higher digit of year is 2
+  timeAndDate_Out[41:39] <= 3'b010;    // weekday is Tuesday
+  timeAndDate_Out[43:42] <= 2'b00;     // timezone is 0
+end
+/*
+begin 
   timeAndDate_Out[3:0]   <= 4'b0101;   // lower digit of second is 5
   timeAndDate_Out[6:4]   <= 3'b100;    // higher digit of second is 4
   timeAndDate_Out[10:7]  <= 4'b1001;   // lower digit of minute is 9
@@ -34,5 +52,6 @@ begin
   timeAndDate_Out[41:39] <= 3'b010;    // weekday is Tuesday
   timeAndDate_Out[43:42] <= 2'b00;     // timezone is 0
 end
+*/
 
 endmodule

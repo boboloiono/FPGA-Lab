@@ -5,7 +5,7 @@ input[25:0] resetValue_in;
 output clk_enable;
 reg clk_enable;
 
-reg [9:0] counter;
+reg [30:0] counter;
 reg enable;
 
 parameter freq_divider=10000000;
