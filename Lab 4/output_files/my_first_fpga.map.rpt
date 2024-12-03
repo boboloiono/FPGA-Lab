@@ -1,5 +1,5 @@
 Analysis & Synthesis report for my_first_fpga
-Tue Nov 05 23:33:30 2024
+Tue Dec 03 16:18:08 2024
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -26,10 +26,10 @@ Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
  18. Parameter Settings for User Entity Instance: lcddriver:inst7
  19. Parameter Settings for User Entity Instance: lcddriver:inst7|FIFO:MAP_FIFO|scfifo:scfifo_component
  20. Parameter Settings for User Entity Instance: pll:inst1|altpll:altpll_component
- 21. Parameter Settings for User Entity Instance: GenClockDCF:inst2
- 22. Parameter Settings for Inferred Entity Instance: timeAndDateClock:inst5|lpm_divide:Mod0
- 23. Parameter Settings for Inferred Entity Instance: timeAndDateClock:inst5|lpm_divide:Mod1
- 24. Parameter Settings for Inferred Entity Instance: timeAndDateClock:inst5|lpm_divide:Mod2
+ 21. Parameter Settings for User Entity Instance: GenClockDCF:inst
+ 22. Parameter Settings for Inferred Entity Instance: timeAndDateClock:inst14|lpm_divide:Mod0
+ 23. Parameter Settings for Inferred Entity Instance: timeAndDateClock:inst14|lpm_divide:Mod1
+ 24. Parameter Settings for Inferred Entity Instance: timeAndDateClock:inst14|lpm_divide:Mod2
  25. scfifo Parameter Settings by Entity Instance
  26. altpll Parameter Settings by Entity Instance
  27. Port Connectivity Checks: "lcddriver:inst7|FIFO:MAP_FIFO"
@@ -62,15 +62,15 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Nov 05 23:33:30 2024       ;
+; Analysis & Synthesis Status        ; Successful - Tue Dec 03 16:18:08 2024       ;
 ; Quartus Prime Version              ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                      ; my_first_fpga                               ;
 ; Top-level Entity Name              ; my_first_fpga                               ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 845                                         ;
-;     Total combinational functions  ; 758                                         ;
-;     Dedicated logic registers      ; 463                                         ;
-; Total registers                    ; 463                                         ;
+; Total logic elements               ; 680                                         ;
+;     Total combinational functions  ; 632                                         ;
+;     Dedicated logic registers      ; 370                                         ;
+; Total registers                    ; 370                                         ;
 ; Total pins                         ; 16                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 512                                         ;
@@ -174,14 +174,10 @@ agreement for further details.
 ; Maximum allowed            ; 12          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 5           ;
+; Maximum used               ; 1           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processor 3            ;   0.0%      ;
-;     Processor 4            ;   0.0%      ;
-;     Processor 5            ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -239,20 +235,20 @@ agreement for further details.
 +---------------------------------------------+------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                        ;
 +---------------------------------------------+------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 845                                                                          ;
+; Estimated Total logic elements              ; 680                                                                          ;
 ;                                             ;                                                                              ;
-; Total combinational functions               ; 758                                                                          ;
+; Total combinational functions               ; 632                                                                          ;
 ; Logic element usage by number of LUT inputs ;                                                                              ;
-;     -- 4 input functions                    ; 350                                                                          ;
-;     -- 3 input functions                    ; 122                                                                          ;
-;     -- <=2 input functions                  ; 286                                                                          ;
+;     -- 4 input functions                    ; 258                                                                          ;
+;     -- 3 input functions                    ; 99                                                                           ;
+;     -- <=2 input functions                  ; 275                                                                          ;
 ;                                             ;                                                                              ;
 ; Logic elements by mode                      ;                                                                              ;
-;     -- normal mode                          ; 580                                                                          ;
-;     -- arithmetic mode                      ; 178                                                                          ;
+;     -- normal mode                          ; 459                                                                          ;
+;     -- arithmetic mode                      ; 173                                                                          ;
 ;                                             ;                                                                              ;
-; Total registers                             ; 463                                                                          ;
-;     -- Dedicated logic registers            ; 463                                                                          ;
+; Total registers                             ; 370                                                                          ;
+;     -- Dedicated logic registers            ; 370                                                                          ;
 ;     -- I/O registers                        ; 0                                                                            ;
 ;                                             ;                                                                              ;
 ; I/O pins                                    ; 16                                                                           ;
@@ -264,9 +260,9 @@ agreement for further details.
 ;     -- PLLs                                 ; 1                                                                            ;
 ;                                             ;                                                                              ;
 ; Maximum fan-out node                        ; pll:inst1|altpll:altpll_component|pll_altpll:auto_generated|wire_pll1_clk[0] ;
-; Maximum fan-out                             ; 480                                                                          ;
-; Total fan-out                               ; 4381                                                                         ;
-; Average fan-out                             ; 3.43                                                                         ;
+; Maximum fan-out                             ; 387                                                                          ;
+; Total fan-out                               ; 3504                                                                         ;
+; Average fan-out                             ; 3.31                                                                         ;
 +---------------------------------------------+------------------------------------------------------------------------------+
 
 
@@ -275,10 +271,9 @@ agreement for further details.
 +---------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 ; Compilation Hierarchy Node                  ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                          ; Entity Name         ; Library Name ;
 +---------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |my_first_fpga                              ; 758 (1)             ; 463 (0)                   ; 512         ; 0            ; 0       ; 0         ; 16   ; 0            ; |my_first_fpga                                                                                                                               ; my_first_fpga       ; work         ;
-;    |GenClockDCF:inst2|                      ; 209 (209)           ; 166 (166)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |my_first_fpga|GenClockDCF:inst2                                                                                                             ; GenClockDCF         ; work         ;
-;    |LCDsteuerung:inst8|                     ; 225 (225)           ; 86 (86)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |my_first_fpga|LCDsteuerung:inst8                                                                                                            ; LCDsteuerung        ; work         ;
-;    |dcf77_decoder:inst|                     ; 92 (92)             ; 87 (87)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |my_first_fpga|dcf77_decoder:inst                                                                                                            ; dcf77_decoder       ; work         ;
+; |my_first_fpga                              ; 632 (1)             ; 370 (0)                   ; 512         ; 0            ; 0       ; 0         ; 16   ; 0            ; |my_first_fpga                                                                                                                               ; my_first_fpga       ; work         ;
+;    |GenClockDCF:inst|                       ; 209 (209)           ; 165 (165)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |my_first_fpga|GenClockDCF:inst                                                                                                              ; GenClockDCF         ; work         ;
+;    |LCDsteuerung:inst8|                     ; 211 (211)           ; 83 (83)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |my_first_fpga|LCDsteuerung:inst8                                                                                                            ; LCDsteuerung        ; work         ;
 ;    |lcddriver:inst7|                        ; 127 (93)            ; 80 (55)                   ; 512         ; 0            ; 0       ; 0         ; 0    ; 0            ; |my_first_fpga|lcddriver:inst7                                                                                                               ; lcddriver           ; work         ;
 ;       |FIFO:MAP_FIFO|                       ; 34 (0)              ; 25 (0)                    ; 512         ; 0            ; 0       ; 0         ; 0    ; 0            ; |my_first_fpga|lcddriver:inst7|FIFO:MAP_FIFO                                                                                                 ; FIFO                ; work         ;
 ;          |scfifo:scfifo_component|          ; 34 (0)              ; 25 (0)                    ; 512         ; 0            ; 0       ; 0         ; 0    ; 0            ; |my_first_fpga|lcddriver:inst7|FIFO:MAP_FIFO|scfifo:scfifo_component                                                                         ; scfifo              ; work         ;
@@ -291,11 +286,11 @@ agreement for further details.
 ;    |pll:inst1|                              ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |my_first_fpga|pll:inst1                                                                                                                     ; pll                 ; work         ;
 ;       |altpll:altpll_component|             ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |my_first_fpga|pll:inst1|altpll:altpll_component                                                                                             ; altpll              ; work         ;
 ;          |pll_altpll:auto_generated|        ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |my_first_fpga|pll:inst1|altpll:altpll_component|pll_altpll:auto_generated                                                                   ; pll_altpll          ; work         ;
-;    |timeAndDateClock:inst5|                 ; 104 (100)           ; 44 (44)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |my_first_fpga|timeAndDateClock:inst5                                                                                                        ; timeAndDateClock    ; work         ;
-;       |lpm_divide:Mod2|                     ; 4 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |my_first_fpga|timeAndDateClock:inst5|lpm_divide:Mod2                                                                                        ; lpm_divide          ; work         ;
-;          |lpm_divide_g9m:auto_generated|    ; 4 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |my_first_fpga|timeAndDateClock:inst5|lpm_divide:Mod2|lpm_divide_g9m:auto_generated                                                          ; lpm_divide_g9m      ; work         ;
-;             |sign_div_unsign_5kh:divider|   ; 4 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |my_first_fpga|timeAndDateClock:inst5|lpm_divide:Mod2|lpm_divide_g9m:auto_generated|sign_div_unsign_5kh:divider                              ; sign_div_unsign_5kh ; work         ;
-;                |alt_u_div_u3f:divider|      ; 4 (4)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |my_first_fpga|timeAndDateClock:inst5|lpm_divide:Mod2|lpm_divide_g9m:auto_generated|sign_div_unsign_5kh:divider|alt_u_div_u3f:divider        ; alt_u_div_u3f       ; work         ;
+;    |timeAndDateClock:inst14|                ; 84 (80)             ; 42 (42)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |my_first_fpga|timeAndDateClock:inst14                                                                                                       ; timeAndDateClock    ; work         ;
+;       |lpm_divide:Mod2|                     ; 4 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |my_first_fpga|timeAndDateClock:inst14|lpm_divide:Mod2                                                                                       ; lpm_divide          ; work         ;
+;          |lpm_divide_g9m:auto_generated|    ; 4 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |my_first_fpga|timeAndDateClock:inst14|lpm_divide:Mod2|lpm_divide_g9m:auto_generated                                                         ; lpm_divide_g9m      ; work         ;
+;             |sign_div_unsign_5kh:divider|   ; 4 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |my_first_fpga|timeAndDateClock:inst14|lpm_divide:Mod2|lpm_divide_g9m:auto_generated|sign_div_unsign_5kh:divider                             ; sign_div_unsign_5kh ; work         ;
+;                |alt_u_div_u3f:divider|      ; 4 (4)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |my_first_fpga|timeAndDateClock:inst14|lpm_divide:Mod2|lpm_divide_g9m:auto_generated|sign_div_unsign_5kh:divider|alt_u_div_u3f:divider       ; alt_u_div_u3f       ; work         ;
 +---------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -392,56 +387,110 @@ Encoding Type:  One-Hot
 +----------------------+-------------------+-------------------+------------------+------------------+------------------+------------------+-------------------+-------------------+----------------------+----------------------+-------------------+-------------------+------------------+------------------+-------------------+-------------------+-------------------+-------------------+-----------------+-----------------+-----------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-----------------+
 
 
-+-----------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                      ;
-+-------------------------------------------+---------------------------------------------+
-; Register name                             ; Reason for Removal                          ;
-+-------------------------------------------+---------------------------------------------+
-; LCDsteuerung:inst8|data_mode_out[0]       ; Stuck at GND due to stuck port data_in      ;
-; LCDsteuerung:inst8|address_Col_out[5]     ; Stuck at GND due to stuck port data_in      ;
-; LCDsteuerung:inst8|display_shift_out[0,1] ; Stuck at GND due to stuck port data_in      ;
-; LCDsteuerung:inst8|cursor_on_out          ; Stuck at GND due to stuck port data_in      ;
-; LCDsteuerung:inst8|cursor_blink_out       ; Stuck at GND due to stuck port data_in      ;
-; lcddriver:inst7|Display_Shift_R[0,1]      ; Stuck at GND due to stuck port data_in      ;
-; lcddriver:inst7|cursor_On_R               ; Stuck at GND due to stuck port data_in      ;
-; lcddriver:inst7|Cursor_blink_R            ; Stuck at GND due to stuck port data_in      ;
-; LCDsteuerung:inst8|states_R[1..5]         ; Merged with LCDsteuerung:inst8|states_R[0]  ;
-; LCDsteuerung:inst8|states_R[0]            ; Stuck at GND due to stuck port data_in      ;
-; LCDsteuerung:inst8|state_R.updateFrame    ; Stuck at GND due to stuck port data_in      ;
-; LCDsteuerung:inst8|state_R.updateStates   ; Stuck at GND due to stuck port data_in      ;
-; LCDsteuerung:inst8|address_Col_out[4]     ; Stuck at GND due to stuck port data_in      ;
-; lcddriver:inst7|lcd_states.init           ; Stuck at GND due to stuck port data_in      ;
-; lcddriver:inst7|lcd_states.init1a         ; Stuck at GND due to stuck port data_in      ;
-; lcddriver:inst7|lcd_states.init1b         ; Stuck at GND due to stuck port data_in      ;
-; lcddriver:inst7|lcd_states.init2a         ; Stuck at GND due to stuck port data_in      ;
-; lcddriver:inst7|lcd_states.init2b         ; Stuck at GND due to stuck port data_in      ;
-; lcddriver:inst7|lcd_states.init3a         ; Stuck at GND due to stuck port data_in      ;
-; lcddriver:inst7|lcd_states.init3b         ; Stuck at GND due to stuck port data_in      ;
-; lcddriver:inst7|lcd_states.init4a         ; Stuck at GND due to stuck port data_in      ;
-; lcddriver:inst7|lcd_states.init4b         ; Stuck at GND due to stuck port data_in      ;
-; lcddriver:inst7|lcd_states.init5a         ; Stuck at GND due to stuck port data_in      ;
-; lcddriver:inst7|lcd_states.init5b         ; Stuck at GND due to stuck port data_in      ;
-; lcddriver:inst7|lcd_states.init6a         ; Stuck at GND due to stuck port data_in      ;
-; lcddriver:inst7|lcd_states.init6b         ; Stuck at GND due to stuck port data_in      ;
-; lcddriver:inst7|lcd_states.init7a         ; Stuck at GND due to stuck port data_in      ;
-; lcddriver:inst7|lcd_states.init7b         ; Stuck at GND due to stuck port data_in      ;
-; lcddriver:inst7|wait_counter[0..6]        ; Stuck at GND due to stuck port clock_enable ;
-; Total Number of Removed Registers = 41    ;                                             ;
-+-------------------------------------------+---------------------------------------------+
++-----------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                        ;
++-------------------------------------------------------------+---------------------------------------------+
+; Register name                                               ; Reason for Removal                          ;
++-------------------------------------------------------------+---------------------------------------------+
+; LCDsteuerung:inst8|data_mode_out[0]                         ; Stuck at GND due to stuck port data_in      ;
+; LCDsteuerung:inst8|address_Col_out[5]                       ; Stuck at GND due to stuck port data_in      ;
+; LCDsteuerung:inst8|display_shift_out[0,1]                   ; Stuck at GND due to stuck port data_in      ;
+; LCDsteuerung:inst8|cursor_on_out                            ; Stuck at GND due to stuck port data_in      ;
+; LCDsteuerung:inst8|cursor_blink_out                         ; Stuck at GND due to stuck port data_in      ;
+; lcddriver:inst7|Display_Shift_R[0,1]                        ; Stuck at GND due to stuck port data_in      ;
+; lcddriver:inst7|cursor_On_R                                 ; Stuck at GND due to stuck port data_in      ;
+; lcddriver:inst7|Cursor_blink_R                              ; Stuck at GND due to stuck port data_in      ;
+; LCDsteuerung:inst8|states_R[1..5]                           ; Merged with LCDsteuerung:inst8|states_R[0]  ;
+; LCDsteuerung:inst8|states_R[0]                              ; Stuck at GND due to stuck port data_in      ;
+; dcf77_decoder:inst12|data_valid                             ; Stuck at GND due to stuck port data_in      ;
+; timeAndDateClock:inst14|timeAndDate_Out[42]                 ; Stuck at GND due to stuck port clock_enable ;
+; dcf77_decoder:inst12|timeAndDate_out[42]                    ; Lost fanout                                 ;
+; timeAndDateClock:inst14|timeAndDate_Out[43]                 ; Stuck at GND due to stuck port clock_enable ;
+; dcf77_decoder:inst12|timeAndDate_out[7..41,43]              ; Lost fanout                                 ;
+; LCDsteuerung:inst8|timezone_R[0,1]                          ; Stuck at GND due to stuck port data_in      ;
+; dcf77_decoder:inst12|received_bits[17]                      ; Lost fanout                                 ;
+; GenClockDCF:inst|CLK_ENA_HZ_sync_out                        ; Lost fanout                                 ;
+; dcf77_decoder:inst12|bit_count[0..5]                        ; Lost fanout                                 ;
+; dcf77_decoder:inst12|received_bits[18,21..27,29..34,36..57] ; Lost fanout                                 ;
+; LCDsteuerung:inst8|state_R.updateFrame                      ; Stuck at GND due to stuck port data_in      ;
+; LCDsteuerung:inst8|state_R.updateTimezone                   ; Stuck at GND due to stuck port data_in      ;
+; LCDsteuerung:inst8|state_R.updateStates                     ; Stuck at GND due to stuck port data_in      ;
+; LCDsteuerung:inst8|address_Col_out[4]                       ; Stuck at GND due to stuck port data_in      ;
+; lcddriver:inst7|lcd_states.init                             ; Stuck at GND due to stuck port data_in      ;
+; lcddriver:inst7|lcd_states.init1a                           ; Stuck at GND due to stuck port data_in      ;
+; lcddriver:inst7|lcd_states.init1b                           ; Stuck at GND due to stuck port data_in      ;
+; lcddriver:inst7|lcd_states.init2a                           ; Stuck at GND due to stuck port data_in      ;
+; lcddriver:inst7|lcd_states.init2b                           ; Stuck at GND due to stuck port data_in      ;
+; lcddriver:inst7|lcd_states.init3a                           ; Stuck at GND due to stuck port data_in      ;
+; lcddriver:inst7|lcd_states.init3b                           ; Stuck at GND due to stuck port data_in      ;
+; lcddriver:inst7|lcd_states.init4a                           ; Stuck at GND due to stuck port data_in      ;
+; lcddriver:inst7|lcd_states.init4b                           ; Stuck at GND due to stuck port data_in      ;
+; lcddriver:inst7|lcd_states.init5a                           ; Stuck at GND due to stuck port data_in      ;
+; lcddriver:inst7|lcd_states.init5b                           ; Stuck at GND due to stuck port data_in      ;
+; lcddriver:inst7|lcd_states.init6a                           ; Stuck at GND due to stuck port data_in      ;
+; lcddriver:inst7|lcd_states.init6b                           ; Stuck at GND due to stuck port data_in      ;
+; lcddriver:inst7|lcd_states.init7a                           ; Stuck at GND due to stuck port data_in      ;
+; lcddriver:inst7|lcd_states.init7b                           ; Stuck at GND due to stuck port data_in      ;
+; lcddriver:inst7|wait_counter[0..6]                          ; Stuck at GND due to stuck port clock_enable ;
+; Total Number of Removed Registers = 128                     ;                                             ;
++-------------------------------------------------------------+---------------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                             ;
-+-----------------------------------------+---------------------------+-------------------------------------------------------------------+
-; Register name                           ; Reason for Removal        ; Registers Removed due to This Register                            ;
-+-----------------------------------------+---------------------------+-------------------------------------------------------------------+
-; lcddriver:inst7|lcd_states.init         ; Stuck at GND              ; lcddriver:inst7|wait_counter[6], lcddriver:inst7|wait_counter[5], ;
-;                                         ; due to stuck port data_in ; lcddriver:inst7|wait_counter[4], lcddriver:inst7|wait_counter[3], ;
-;                                         ;                           ; lcddriver:inst7|wait_counter[2], lcddriver:inst7|wait_counter[1], ;
-;                                         ;                           ; lcddriver:inst7|wait_counter[0]                                   ;
-; LCDsteuerung:inst8|state_R.updateStates ; Stuck at GND              ; LCDsteuerung:inst8|address_Col_out[4]                             ;
-;                                         ; due to stuck port data_in ;                                                                   ;
-+-----------------------------------------+---------------------------+-------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                ;
++------------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
+; Register name                            ; Reason for Removal        ; Registers Removed due to This Register                                              ;
++------------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
+; dcf77_decoder:inst12|data_valid          ; Stuck at GND              ; timeAndDateClock:inst14|timeAndDate_Out[42],                                        ;
+;                                          ; due to stuck port data_in ; dcf77_decoder:inst12|timeAndDate_out[42],                                           ;
+;                                          ;                           ; timeAndDateClock:inst14|timeAndDate_Out[43],                                        ;
+;                                          ;                           ; dcf77_decoder:inst12|timeAndDate_out[43], dcf77_decoder:inst12|timeAndDate_out[38], ;
+;                                          ;                           ; dcf77_decoder:inst12|timeAndDate_out[37], dcf77_decoder:inst12|timeAndDate_out[36], ;
+;                                          ;                           ; dcf77_decoder:inst12|timeAndDate_out[35], dcf77_decoder:inst12|timeAndDate_out[34], ;
+;                                          ;                           ; dcf77_decoder:inst12|timeAndDate_out[33], dcf77_decoder:inst12|timeAndDate_out[32], ;
+;                                          ;                           ; dcf77_decoder:inst12|timeAndDate_out[31], dcf77_decoder:inst12|timeAndDate_out[17], ;
+;                                          ;                           ; dcf77_decoder:inst12|timeAndDate_out[16], dcf77_decoder:inst12|timeAndDate_out[15], ;
+;                                          ;                           ; dcf77_decoder:inst12|timeAndDate_out[14], dcf77_decoder:inst12|timeAndDate_out[10], ;
+;                                          ;                           ; dcf77_decoder:inst12|timeAndDate_out[9], dcf77_decoder:inst12|timeAndDate_out[8],   ;
+;                                          ;                           ; dcf77_decoder:inst12|timeAndDate_out[7], dcf77_decoder:inst12|received_bits[17],    ;
+;                                          ;                           ; GenClockDCF:inst|CLK_ENA_HZ_sync_out, dcf77_decoder:inst12|bit_count[5],            ;
+;                                          ;                           ; dcf77_decoder:inst12|bit_count[4], dcf77_decoder:inst12|bit_count[3],               ;
+;                                          ;                           ; dcf77_decoder:inst12|bit_count[2], dcf77_decoder:inst12|bit_count[1],               ;
+;                                          ;                           ; dcf77_decoder:inst12|bit_count[0], dcf77_decoder:inst12|received_bits[18],          ;
+;                                          ;                           ; dcf77_decoder:inst12|received_bits[57], dcf77_decoder:inst12|received_bits[56],     ;
+;                                          ;                           ; dcf77_decoder:inst12|received_bits[55], dcf77_decoder:inst12|received_bits[54],     ;
+;                                          ;                           ; dcf77_decoder:inst12|received_bits[53], dcf77_decoder:inst12|received_bits[52],     ;
+;                                          ;                           ; dcf77_decoder:inst12|received_bits[51], dcf77_decoder:inst12|received_bits[50],     ;
+;                                          ;                           ; dcf77_decoder:inst12|received_bits[32], dcf77_decoder:inst12|received_bits[31],     ;
+;                                          ;                           ; dcf77_decoder:inst12|received_bits[30], dcf77_decoder:inst12|received_bits[29],     ;
+;                                          ;                           ; dcf77_decoder:inst12|received_bits[24], dcf77_decoder:inst12|received_bits[23],     ;
+;                                          ;                           ; dcf77_decoder:inst12|received_bits[22], dcf77_decoder:inst12|received_bits[21]      ;
+; lcddriver:inst7|lcd_states.init          ; Stuck at GND              ; lcddriver:inst7|wait_counter[6], lcddriver:inst7|wait_counter[5],                   ;
+;                                          ; due to stuck port data_in ; lcddriver:inst7|wait_counter[4], lcddriver:inst7|wait_counter[3],                   ;
+;                                          ;                           ; lcddriver:inst7|wait_counter[2], lcddriver:inst7|wait_counter[1],                   ;
+;                                          ;                           ; lcddriver:inst7|wait_counter[0]                                                     ;
+; dcf77_decoder:inst12|timeAndDate_out[30] ; Lost Fanouts              ; dcf77_decoder:inst12|received_bits[49]                                              ;
+; dcf77_decoder:inst12|timeAndDate_out[29] ; Lost Fanouts              ; dcf77_decoder:inst12|received_bits[48]                                              ;
+; dcf77_decoder:inst12|timeAndDate_out[28] ; Lost Fanouts              ; dcf77_decoder:inst12|received_bits[47]                                              ;
+; dcf77_decoder:inst12|timeAndDate_out[27] ; Lost Fanouts              ; dcf77_decoder:inst12|received_bits[46]                                              ;
+; dcf77_decoder:inst12|timeAndDate_out[26] ; Lost Fanouts              ; dcf77_decoder:inst12|received_bits[45]                                              ;
+; dcf77_decoder:inst12|timeAndDate_out[24] ; Lost Fanouts              ; dcf77_decoder:inst12|received_bits[40]                                              ;
+; dcf77_decoder:inst12|timeAndDate_out[25] ; Lost Fanouts              ; dcf77_decoder:inst12|received_bits[41]                                              ;
+; dcf77_decoder:inst12|timeAndDate_out[23] ; Lost Fanouts              ; dcf77_decoder:inst12|received_bits[39]                                              ;
+; dcf77_decoder:inst12|timeAndDate_out[22] ; Lost Fanouts              ; dcf77_decoder:inst12|received_bits[38]                                              ;
+; dcf77_decoder:inst12|timeAndDate_out[21] ; Lost Fanouts              ; dcf77_decoder:inst12|received_bits[37]                                              ;
+; dcf77_decoder:inst12|timeAndDate_out[20] ; Lost Fanouts              ; dcf77_decoder:inst12|received_bits[36]                                              ;
+; dcf77_decoder:inst12|timeAndDate_out[39] ; Lost Fanouts              ; dcf77_decoder:inst12|received_bits[42]                                              ;
+; dcf77_decoder:inst12|timeAndDate_out[40] ; Lost Fanouts              ; dcf77_decoder:inst12|received_bits[43]                                              ;
+; dcf77_decoder:inst12|timeAndDate_out[41] ; Lost Fanouts              ; dcf77_decoder:inst12|received_bits[44]                                              ;
+; dcf77_decoder:inst12|timeAndDate_out[18] ; Lost Fanouts              ; dcf77_decoder:inst12|received_bits[33]                                              ;
+; dcf77_decoder:inst12|timeAndDate_out[19] ; Lost Fanouts              ; dcf77_decoder:inst12|received_bits[34]                                              ;
+; dcf77_decoder:inst12|timeAndDate_out[11] ; Lost Fanouts              ; dcf77_decoder:inst12|received_bits[25]                                              ;
+; dcf77_decoder:inst12|timeAndDate_out[12] ; Lost Fanouts              ; dcf77_decoder:inst12|received_bits[26]                                              ;
+; dcf77_decoder:inst12|timeAndDate_out[13] ; Lost Fanouts              ; dcf77_decoder:inst12|received_bits[27]                                              ;
+; LCDsteuerung:inst8|state_R.updateStates  ; Stuck at GND              ; LCDsteuerung:inst8|address_Col_out[4]                                               ;
+;                                          ; due to stuck port data_in ;                                                                                     ;
++------------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -449,12 +498,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 463   ;
-; Number of registers using Synchronous Clear  ; 85    ;
-; Number of registers using Synchronous Load   ; 52    ;
-; Number of registers using Asynchronous Clear ; 458   ;
+; Total registers                              ; 370   ;
+; Number of registers using Synchronous Clear  ; 37    ;
+; Number of registers using Synchronous Load   ; 33    ;
+; Number of registers using Asynchronous Clear ; 368   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 237   ;
+; Number of registers using Clock Enable       ; 186   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -465,47 +514,45 @@ Encoding Type:  One-Hot
 ; Inverted Register                      ; Fan out ;
 +----------------------------------------+---------+
 ; LCDsteuerung:inst8|day_Low_R[0]        ; 2       ;
-; LCDsteuerung:inst8|month_Low_R[0]      ; 2       ;
+; LCDsteuerung:inst8|month_Low_R[0]      ; 3       ;
 ; Total number of inverted registers = 2 ;         ;
 +----------------------------------------+---------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                          ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------+
-; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |my_first_fpga|GenClockDCF:inst2|sync_counter[31]         ;
-; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |my_first_fpga|dcf77_decoder:inst|bit_count[1]            ;
-; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |my_first_fpga|lcddriver:inst7|wait_counter[6]            ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst5|timeAndDate_Out[37] ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst5|timeAndDate_Out[19] ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst5|timeAndDate_Out[14] ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst5|timeAndDate_Out[2]  ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst5|timeAndDate_Out[6]  ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst5|timeAndDate_Out[8]  ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst5|timeAndDate_Out[12] ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst5|timeAndDate_Out[34] ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst5|timeAndDate_Out[41] ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst5|timeAndDate_Out[27] ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst5|timeAndDate_Out[25] ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst5|timeAndDate_Out[20] ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|timezone_R[0]           ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|weekday_R[2]            ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|sec_Low_R[1]            ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|sec_High_R[0]           ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|min_Low_R[2]            ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|min_High_R[0]           ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|hour_Low_R[3]           ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|hour_High_R[0]          ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|day_Low_R[1]            ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|day_High_R[1]           ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|month_Low_R[2]          ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|year_High_R[0]          ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|year_Low_R[1]           ;
-; 11:1               ; 5 bits    ; 35 LEs        ; 5 LEs                ; 30 LEs                 ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|write_Count_R[2]        ;
-; 3:1                ; 14 bits   ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; No         ; |my_first_fpga|lcddriver:inst7|lcd_states                 ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |my_first_fpga|GenClockDCF:inst|sync_counter[29]           ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |my_first_fpga|dcf77_decoder:inst12|bit_count[1]           ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |my_first_fpga|lcddriver:inst7|wait_counter[5]             ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst14|timeAndDate_Out[36] ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst14|timeAndDate_Out[18] ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst14|timeAndDate_Out[14] ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst14|timeAndDate_Out[10] ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst14|timeAndDate_Out[11] ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst14|timeAndDate_Out[34] ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst14|timeAndDate_Out[39] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst14|timeAndDate_Out[27] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst14|timeAndDate_Out[24] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |my_first_fpga|timeAndDateClock:inst14|timeAndDate_Out[22] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|timezone_R[1]            ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|weekday_R[2]             ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|sec_Low_R[0]             ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|sec_High_R[2]            ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|min_Low_R[3]             ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|min_High_R[2]            ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|hour_Low_R[3]            ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|hour_High_R[1]           ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|day_Low_R[3]             ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|day_High_R[1]            ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|month_Low_R[3]           ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|year_High_R[0]           ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|year_Low_R[0]            ;
+; 11:1               ; 5 bits    ; 35 LEs        ; 5 LEs                ; 30 LEs                 ; Yes        ; |my_first_fpga|LCDsteuerung:inst8|write_Count_R[1]         ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; No         ; |my_first_fpga|lcddriver:inst7|lcd_states                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -930,87 +977,87 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+----------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: GenClockDCF:inst2 ;
-+----------------+----------+------------------------------------+
-; Parameter Name ; Value    ; Type                               ;
-+----------------+----------+------------------------------------+
-; frequency      ; 10000000 ; Signed Integer                     ;
-; fir_len        ; 32       ; Signed Integer                     ;
-; thresh_lo      ; 14       ; Signed Integer                     ;
-; thresh_hi      ; 16       ; Signed Integer                     ;
-; timestep       ; 128      ; Signed Integer                     ;
-; sample_point   ; 1500000  ; Signed Integer                     ;
-+----------------+----------+------------------------------------+
++---------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: GenClockDCF:inst ;
++----------------+----------+-----------------------------------+
+; Parameter Name ; Value    ; Type                              ;
++----------------+----------+-----------------------------------+
+; frequency      ; 10000000 ; Signed Integer                    ;
+; fir_len        ; 32       ; Signed Integer                    ;
+; thresh_lo      ; 14       ; Signed Integer                    ;
+; thresh_hi      ; 16       ; Signed Integer                    ;
+; timestep       ; 128      ; Signed Integer                    ;
+; sample_point   ; 1500000  ; Signed Integer                    ;
++----------------+----------+-----------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-----------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: timeAndDateClock:inst5|lpm_divide:Mod0 ;
-+------------------------+----------------+-----------------------------------------------+
-; Parameter Name         ; Value          ; Type                                          ;
-+------------------------+----------------+-----------------------------------------------+
-; LPM_WIDTHN             ; 8              ; Untyped                                       ;
-; LPM_WIDTHD             ; 7              ; Untyped                                       ;
-; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
-; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
-; LPM_PIPELINE           ; 0              ; Untyped                                       ;
-; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                       ;
-; MAXIMIZE_SPEED         ; 5              ; Untyped                                       ;
-; CBXI_PARAMETER         ; lpm_divide_p9m ; Untyped                                       ;
-; CARRY_CHAIN            ; MANUAL         ; Untyped                                       ;
-; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                       ;
-; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                    ;
-; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                  ;
-; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                  ;
-; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                ;
-+------------------------+----------------+-----------------------------------------------+
++------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: timeAndDateClock:inst14|lpm_divide:Mod0 ;
++------------------------+----------------+------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                           ;
++------------------------+----------------+------------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                        ;
+; LPM_WIDTHD             ; 7              ; Untyped                                        ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                        ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                        ;
+; LPM_PIPELINE           ; 0              ; Untyped                                        ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                        ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                        ;
+; CBXI_PARAMETER         ; lpm_divide_p9m ; Untyped                                        ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                        ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                        ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                     ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                   ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                   ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                 ;
++------------------------+----------------+------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-----------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: timeAndDateClock:inst5|lpm_divide:Mod1 ;
-+------------------------+----------------+-----------------------------------------------+
-; Parameter Name         ; Value          ; Type                                          ;
-+------------------------+----------------+-----------------------------------------------+
-; LPM_WIDTHN             ; 8              ; Untyped                                       ;
-; LPM_WIDTHD             ; 9              ; Untyped                                       ;
-; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
-; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
-; LPM_PIPELINE           ; 0              ; Untyped                                       ;
-; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                       ;
-; MAXIMIZE_SPEED         ; 5              ; Untyped                                       ;
-; CBXI_PARAMETER         ; lpm_divide_r9m ; Untyped                                       ;
-; CARRY_CHAIN            ; MANUAL         ; Untyped                                       ;
-; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                       ;
-; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                    ;
-; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                  ;
-; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                  ;
-; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                ;
-+------------------------+----------------+-----------------------------------------------+
++------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: timeAndDateClock:inst14|lpm_divide:Mod1 ;
++------------------------+----------------+------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                           ;
++------------------------+----------------+------------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                        ;
+; LPM_WIDTHD             ; 9              ; Untyped                                        ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                        ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                        ;
+; LPM_PIPELINE           ; 0              ; Untyped                                        ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                        ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                        ;
+; CBXI_PARAMETER         ; lpm_divide_r9m ; Untyped                                        ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                        ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                        ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                     ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                   ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                   ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                 ;
++------------------------+----------------+------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-----------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: timeAndDateClock:inst5|lpm_divide:Mod2 ;
-+------------------------+----------------+-----------------------------------------------+
-; Parameter Name         ; Value          ; Type                                          ;
-+------------------------+----------------+-----------------------------------------------+
-; LPM_WIDTHN             ; 3              ; Untyped                                       ;
-; LPM_WIDTHD             ; 3              ; Untyped                                       ;
-; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
-; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                       ;
-; LPM_PIPELINE           ; 0              ; Untyped                                       ;
-; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                       ;
-; MAXIMIZE_SPEED         ; 5              ; Untyped                                       ;
-; CBXI_PARAMETER         ; lpm_divide_g9m ; Untyped                                       ;
-; CARRY_CHAIN            ; MANUAL         ; Untyped                                       ;
-; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                       ;
-; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                    ;
-; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                  ;
-; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                  ;
-; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                ;
-+------------------------+----------------+-----------------------------------------------+
++------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: timeAndDateClock:inst14|lpm_divide:Mod2 ;
++------------------------+----------------+------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                           ;
++------------------------+----------------+------------------------------------------------+
+; LPM_WIDTHN             ; 3              ; Untyped                                        ;
+; LPM_WIDTHD             ; 3              ; Untyped                                        ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                        ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                        ;
+; LPM_PIPELINE           ; 0              ; Untyped                                        ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                        ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                        ;
+; CBXI_PARAMETER         ; lpm_divide_g9m ; Untyped                                        ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                        ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                        ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                     ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                   ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                   ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                 ;
++------------------------+----------------+------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -1062,30 +1109,29 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 16                          ;
-; cycloneiii_ff         ; 463                         ;
+; cycloneiii_ff         ; 370                         ;
 ;     CLR               ; 119                         ;
-;     CLR SCLR          ; 73                          ;
-;     CLR SLD           ; 34                          ;
-;     ENA               ; 5                           ;
-;     ENA CLR           ; 202                         ;
-;     ENA CLR SCLR      ; 12                          ;
-;     ENA CLR SLD       ; 18                          ;
+;     CLR SCLR          ; 32                          ;
+;     CLR SLD           ; 33                          ;
+;     ENA               ; 2                           ;
+;     ENA CLR           ; 179                         ;
+;     ENA CLR SCLR      ; 5                           ;
 ; cycloneiii_io_obuf    ; 8                           ;
-; cycloneiii_lcell_comb ; 760                         ;
-;     arith             ; 178                         ;
-;         2 data inputs ; 144                         ;
+; cycloneiii_lcell_comb ; 634                         ;
+;     arith             ; 173                         ;
+;         2 data inputs ; 139                         ;
 ;         3 data inputs ; 34                          ;
-;     normal            ; 582                         ;
+;     normal            ; 461                         ;
 ;         0 data inputs ; 2                           ;
-;         1 data inputs ; 15                          ;
-;         2 data inputs ; 127                         ;
-;         3 data inputs ; 88                          ;
-;         4 data inputs ; 350                         ;
+;         1 data inputs ; 20                          ;
+;         2 data inputs ; 116                         ;
+;         3 data inputs ; 65                          ;
+;         4 data inputs ; 258                         ;
 ; cycloneiii_pll        ; 1                           ;
 ; cycloneiii_ram_block  ; 16                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 7.00                        ;
-; Average LUT depth     ; 3.51                        ;
+; Average LUT depth     ; 3.72                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1104,7 +1150,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Tue Nov 05 23:33:21 2024
+    Info: Processing started: Tue Dec 03 16:17:58 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off my_first_fpga -c my_first_fpga
 Warning (125092): Tcl Script File counter_bus_mux.qip not found
     Info (125063): set_global_assignment -name QIP_FILE counter_bus_mux.qip
@@ -1226,17 +1272,21 @@ Info (12128): Elaborating entity "LCDsteuerung" for hierarchy "LCDsteuerung:inst
 Warning (10492): VHDL Process Statement warning at lcdsteuerung.vhd(274): signal "DCF_Enable_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/intelFPGA_lite/FPGA Lab/Lab 4/lcdsteuerung.vhd Line: 274
 Warning (12125): Using design file genclockdcf.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: GenClockDCF File: C:/intelFPGA_lite/FPGA Lab/Lab 4/genclockdcf.v Line: 18
-Info (12128): Elaborating entity "GenClockDCF" for hierarchy "GenClockDCF:inst2"
+Info (12128): Elaborating entity "GenClockDCF" for hierarchy "GenClockDCF:inst"
 Warning (10036): Verilog HDL or VHDL warning at genclockdcf.v(34): object "DCF_SIGNAL_out" assigned a value but never read File: C:/intelFPGA_lite/FPGA Lab/Lab 4/genclockdcf.v Line: 34
 Warning (12125): Using design file timeanddateclock.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: timeAndDateClock File: C:/intelFPGA_lite/FPGA Lab/Lab 4/timeanddateclock.v Line: 18
-Info (12128): Elaborating entity "timeAndDateClock" for hierarchy "timeAndDateClock:inst5"
+Info (12128): Elaborating entity "timeAndDateClock" for hierarchy "timeAndDateClock:inst14"
 Warning (10036): Verilog HDL or VHDL warning at timeanddateclock.v(41): object "timezone" assigned a value but never read File: C:/intelFPGA_lite/FPGA Lab/Lab 4/timeanddateclock.v Line: 41
 Warning (10230): Verilog HDL assignment warning at timeanddateclock.v(45): truncated value with size 32 to match size of target (8) File: C:/intelFPGA_lite/FPGA Lab/Lab 4/timeanddateclock.v Line: 45
 Warning (12125): Using design file dcf77_decoder.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: dcf77_decoder File: C:/intelFPGA_lite/FPGA Lab/Lab 4/dcf77_decoder.v Line: 17
-Info (12128): Elaborating entity "dcf77_decoder" for hierarchy "dcf77_decoder:inst"
-Warning (10230): Verilog HDL assignment warning at dcf77_decoder.v(56): truncated value with size 32 to match size of target (6) File: C:/intelFPGA_lite/FPGA Lab/Lab 4/dcf77_decoder.v Line: 56
+Info (12128): Elaborating entity "dcf77_decoder" for hierarchy "dcf77_decoder:inst12"
+Warning (10036): Verilog HDL or VHDL warning at dcf77_decoder.v(38): object "minute_parity_ok" assigned a value but never read File: C:/intelFPGA_lite/FPGA Lab/Lab 4/dcf77_decoder.v Line: 38
+Warning (10036): Verilog HDL or VHDL warning at dcf77_decoder.v(38): object "hour_parity_ok" assigned a value but never read File: C:/intelFPGA_lite/FPGA Lab/Lab 4/dcf77_decoder.v Line: 38
+Warning (10036): Verilog HDL or VHDL warning at dcf77_decoder.v(38): object "date_parity_ok" assigned a value but never read File: C:/intelFPGA_lite/FPGA Lab/Lab 4/dcf77_decoder.v Line: 38
+Warning (10230): Verilog HDL assignment warning at dcf77_decoder.v(59): truncated value with size 32 to match size of target (6) File: C:/intelFPGA_lite/FPGA Lab/Lab 4/dcf77_decoder.v Line: 59
+Warning (10230): Verilog HDL assignment warning at dcf77_decoder.v(90): truncated value with size 32 to match size of target (1) File: C:/intelFPGA_lite/FPGA Lab/Lab 4/dcf77_decoder.v Line: 90
 Warning (10240): Verilog HDL Always Construct warning at dcf77_decoder.v(40): inferring latch(es) for variable "timeAndDate_out", which holds its previous value in one or more paths through the always construct File: C:/intelFPGA_lite/FPGA Lab/Lab 4/dcf77_decoder.v Line: 40
 Info (10041): Inferred latch for "timeAndDate_out[0]" at dcf77_decoder.v(40) File: C:/intelFPGA_lite/FPGA Lab/Lab 4/dcf77_decoder.v Line: 40
 Info (10041): Inferred latch for "timeAndDate_out[1]" at dcf77_decoder.v(40) File: C:/intelFPGA_lite/FPGA Lab/Lab 4/dcf77_decoder.v Line: 40
@@ -1246,11 +1296,11 @@ Info (10041): Inferred latch for "timeAndDate_out[4]" at dcf77_decoder.v(40) Fil
 Info (10041): Inferred latch for "timeAndDate_out[5]" at dcf77_decoder.v(40) File: C:/intelFPGA_lite/FPGA Lab/Lab 4/dcf77_decoder.v Line: 40
 Info (10041): Inferred latch for "timeAndDate_out[6]" at dcf77_decoder.v(40) File: C:/intelFPGA_lite/FPGA Lab/Lab 4/dcf77_decoder.v Line: 40
 Info (278001): Inferred 3 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "timeAndDateClock:inst5|Mod0" File: C:/intelFPGA_lite/FPGA Lab/Lab 4/timeanddateclock.v Line: 46
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "timeAndDateClock:inst5|Mod1" File: C:/intelFPGA_lite/FPGA Lab/Lab 4/timeanddateclock.v Line: 46
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "timeAndDateClock:inst5|Mod2" File: C:/intelFPGA_lite/FPGA Lab/Lab 4/timeanddateclock.v Line: 78
-Info (12130): Elaborated megafunction instantiation "timeAndDateClock:inst5|lpm_divide:Mod0" File: C:/intelFPGA_lite/FPGA Lab/Lab 4/timeanddateclock.v Line: 46
-Info (12133): Instantiated megafunction "timeAndDateClock:inst5|lpm_divide:Mod0" with the following parameter: File: C:/intelFPGA_lite/FPGA Lab/Lab 4/timeanddateclock.v Line: 46
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "timeAndDateClock:inst14|Mod0" File: C:/intelFPGA_lite/FPGA Lab/Lab 4/timeanddateclock.v Line: 46
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "timeAndDateClock:inst14|Mod1" File: C:/intelFPGA_lite/FPGA Lab/Lab 4/timeanddateclock.v Line: 46
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "timeAndDateClock:inst14|Mod2" File: C:/intelFPGA_lite/FPGA Lab/Lab 4/timeanddateclock.v Line: 78
+Info (12130): Elaborated megafunction instantiation "timeAndDateClock:inst14|lpm_divide:Mod0" File: C:/intelFPGA_lite/FPGA Lab/Lab 4/timeanddateclock.v Line: 46
+Info (12133): Instantiated megafunction "timeAndDateClock:inst14|lpm_divide:Mod0" with the following parameter: File: C:/intelFPGA_lite/FPGA Lab/Lab 4/timeanddateclock.v Line: 46
     Info (12134): Parameter "LPM_WIDTHN" = "8"
     Info (12134): Parameter "LPM_WIDTHD" = "7"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
@@ -1265,8 +1315,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/add_
     Info (12023): Found entity 1: add_sub_7pc File: C:/intelFPGA_lite/FPGA Lab/Lab 4/db/add_sub_7pc.tdf Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
     Info (12023): Found entity 1: add_sub_8pc File: C:/intelFPGA_lite/FPGA Lab/Lab 4/db/add_sub_8pc.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "timeAndDateClock:inst5|lpm_divide:Mod1" File: C:/intelFPGA_lite/FPGA Lab/Lab 4/timeanddateclock.v Line: 46
-Info (12133): Instantiated megafunction "timeAndDateClock:inst5|lpm_divide:Mod1" with the following parameter: File: C:/intelFPGA_lite/FPGA Lab/Lab 4/timeanddateclock.v Line: 46
+Info (12130): Elaborated megafunction instantiation "timeAndDateClock:inst14|lpm_divide:Mod1" File: C:/intelFPGA_lite/FPGA Lab/Lab 4/timeanddateclock.v Line: 46
+Info (12133): Instantiated megafunction "timeAndDateClock:inst14|lpm_divide:Mod1" with the following parameter: File: C:/intelFPGA_lite/FPGA Lab/Lab 4/timeanddateclock.v Line: 46
     Info (12134): Parameter "LPM_WIDTHN" = "8"
     Info (12134): Parameter "LPM_WIDTHD" = "9"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
@@ -1277,8 +1327,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/sign
     Info (12023): Found entity 1: sign_div_unsign_hkh File: C:/intelFPGA_lite/FPGA Lab/Lab 4/db/sign_div_unsign_hkh.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_m4f.tdf
     Info (12023): Found entity 1: alt_u_div_m4f File: C:/intelFPGA_lite/FPGA Lab/Lab 4/db/alt_u_div_m4f.tdf Line: 27
-Info (12130): Elaborated megafunction instantiation "timeAndDateClock:inst5|lpm_divide:Mod2" File: C:/intelFPGA_lite/FPGA Lab/Lab 4/timeanddateclock.v Line: 78
-Info (12133): Instantiated megafunction "timeAndDateClock:inst5|lpm_divide:Mod2" with the following parameter: File: C:/intelFPGA_lite/FPGA Lab/Lab 4/timeanddateclock.v Line: 78
+Info (12130): Elaborated megafunction instantiation "timeAndDateClock:inst14|lpm_divide:Mod2" File: C:/intelFPGA_lite/FPGA Lab/Lab 4/timeanddateclock.v Line: 78
+Info (12133): Instantiated megafunction "timeAndDateClock:inst14|lpm_divide:Mod2" with the following parameter: File: C:/intelFPGA_lite/FPGA Lab/Lab 4/timeanddateclock.v Line: 78
     Info (12134): Parameter "LPM_WIDTHN" = "3"
     Info (12134): Parameter "LPM_WIDTHD" = "3"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
@@ -1294,19 +1344,20 @@ Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal 
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LCD_Constract" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
+Info (17049): 81 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 919 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 758 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 4 input pins
     Info (21059): Implemented 4 output pins
     Info (21060): Implemented 8 bidirectional pins
-    Info (21061): Implemented 886 logic cells
+    Info (21061): Implemented 725 logic cells
     Info (21064): Implemented 16 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 17 warnings
-    Info: Peak virtual memory: 4827 megabytes
-    Info: Processing ended: Tue Nov 05 23:33:30 2024
-    Info: Elapsed time: 00:00:09
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 22 warnings
+    Info: Peak virtual memory: 4831 megabytes
+    Info: Processing ended: Tue Dec 03 16:18:08 2024
+    Info: Elapsed time: 00:00:10
     Info: Total CPU time (on all processors): 00:00:05
 
 

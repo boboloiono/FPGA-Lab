@@ -1,0 +1,128 @@
+module CI_custom_master
+	#( parameter LATENCY=0 )
+	(
+		// system
+		input	reset,
+		input	clk,
+		
+		// custom instruction
+		input	clk_custom,
+		input	rst_custom,
+		input	clk_en,
+		input	[31:0] dataa,
+		input	[31:0] datab,
+		input	start,
+		output  [31:0] result,
+		output wire	done,
+		
+		// avalon mm master
+		output wire [31:0] master_address,
+		output wire master_read,
+		output wire master_write,
+		output wire [3:0] master_byteenable,
+		input [31:0] master_readdata,
+		input master_readdatavalid,
+		output wire [31:0] master_writedata,
+		output wire [2:0] master_burstcount,
+		input master_waitrequest,
+		
+		//debug
+		output wire debug_start,
+		output wire debug_control_done,
+		output wire debug_done,
+		output wire [15:0] debug_result,
+		output wire [31:0] debug_master_readdata
+	);
+	
+
+	
+	wire m0_control_done;
+	wire m0_user_buffer_output_data;
+	wire m0_user_data_available;
+	reg m0_user_read_buffer;
+	
+	reg [2:0] state;
+	reg read_fifo_done;
+	
+	// debug
+	assign debug_start = start;
+	assign debug_control_done = m0_control_done;
+	assign debug_done = done;
+	assign debug_result = m0_user_buffer_output_data;
+	assign debug_master_readdata = master_readdata;
+	
+	always @(posedge clk) begin
+		if (reset == 1) begin
+			state <= 3'b000;
+			m0_user_read_buffer <= 0;
+			read_fifo_done <= 0;
+		end else begin
+			if (state == 3'b000) begin
+				read_fifo_done <= 0;
+				if (m0_control_done == 1) begin
+					state <= 3'b001;
+				end
+			end else if (state == 3'b001) begin
+				if (m0_user_data_available == 1) begin
+					state <= 3'b010;
+					m0_user_read_buffer <= 1;
+				end
+			end else if (state == 3'b010) begin
+				if (m0_user_buffer_output_data != 0) begin
+					state <= 3'b000;
+					m0_user_read_buffer <= 0;
+					read_fifo_done <= 1;
+				end
+			end else begin
+				state <= 3'b000;
+			end
+		end
+	end
+	
+	custom_master m0(
+		.clk(clk),
+		.reset(reset),
+
+		// control inputs and outputs
+		.control_fixed_location(1'b0),
+		.control_read_base(dataa[15:0]),
+		.control_read_length(datab),
+		.control_write_base(),
+		.control_write_length(),
+		.control_go(start),
+		.control_done(m0_control_done),
+		.control_early_done(),
+		
+		// user logic inputs and outputs
+		.user_read_buffer(m0_user_read_buffer),
+		.user_write_buffer(),
+		.user_buffer_input_data(),
+		.user_buffer_output_data(m0_user_buffer_output_data),
+		.user_data_available(m0_user_data_available),
+		.user_buffer_full(),
+		
+		// master inputs and outputs
+		.master_address(master_address),
+		.master_read(master_read),
+		.master_write(master_write),
+		.master_byteenable(master_byteenable[1:0]),
+		.master_readdata(master_readdata),
+		.master_readdatavalid(master_readdatavalid),
+		.master_writedata(master_writedata),
+		.master_burstcount(master_burstcount),
+		.master_waitrequest(master_waitrequest)
+	);
+	defparam m0.MASTER_DIRECTION = 0;
+	defparam m0.DATA_WIDTH = 16;
+	defparam m0.MEMORY_BASED_FIFO = 1;
+	defparam m0.FIFO_DEPTH = 32;
+	defparam m0.FIFO_DEPTH_LOG2 = 5;
+	defparam m0.ADDRESS_WIDTH = 32;
+	defparam m0.BURST_CAPABLE = 0;
+	defparam m0.MAXIMUM_BURST_COUNT = 2;
+	defparam m0.BURST_COUNT_WIDTH = 2;
+	
+	assign done = (read_fifo_done == 1) & clk_en;
+	assign result = {16'h0000,m0_user_buffer_output_data};
+
+endmodule

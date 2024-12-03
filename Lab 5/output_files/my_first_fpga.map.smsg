@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at setclock.v(274): always construct contains both blocking and non-blocking assignments File: C:/intelFPGA_lite/FPGA Lab/Lab 5/setclock.v Line: 274

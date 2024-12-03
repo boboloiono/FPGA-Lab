@@ -1,0 +1,16 @@
+Fitter Status : Successful - Tue Dec 03 17:59:01 2024
+Quartus Prime Version : 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+Revision Name : my_first_fpga
+Top-level Entity Name : my_first_fpga
+Family : Cyclone IV E
+Device : EP4CE22F17C6
+Timing Models : Final
+Total logic elements : 1,091 / 22,320 ( 5 % )
+    Total combinational functions : 1,016 / 22,320 ( 5 % )
+    Dedicated logic registers : 561 / 22,320 ( 3 % )
+Total registers : 561
+Total pins : 18 / 154 ( 12 % )
+Total virtual pins : 0
+Total memory bits : 512 / 608,256 ( < 1 % )
+Embedded Multiplier 9-bit elements : 0 / 132 ( 0 % )
+Total PLLs : 1 / 4 ( 25 % )

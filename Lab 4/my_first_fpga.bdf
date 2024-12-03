@@ -218,56 +218,6 @@ agreement for further details.
 	)
 )
 (symbol
-	(rect 1152 88 1448 232)
-	(text "timeAndDateClock" (rect 5 0 97 12)(font "Arial" ))
-	(text "inst5" (rect 8 128 30 145)(font "Intel Clear" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "clk" (rect 0 0 14 12)(font "Arial" ))
-		(text "clk" (rect 21 27 35 39)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "clkEn1Hz" (rect 0 0 46 12)(font "Arial" ))
-		(text "clkEn1Hz" (rect 21 43 67 55)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48))
-	)
-	(port
-		(pt 0 64)
-		(input)
-		(text "nReset" (rect 0 0 35 12)(font "Arial" ))
-		(text "nReset" (rect 21 59 56 71)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64))
-	)
-	(port
-		(pt 0 80)
-		(input)
-		(text "setTimeAndDate_in" (rect 0 0 95 12)(font "Arial" ))
-		(text "setTimeAndDate_in" (rect 21 75 116 87)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80))
-	)
-	(port
-		(pt 0 96)
-		(input)
-		(text "timeAndDate_In[43..0]" (rect 0 0 110 12)(font "Arial" ))
-		(text "timeAndDate_In[43..0]" (rect 21 91 131 103)(font "Arial" ))
-		(line (pt 0 96)(pt 16 96)(line_width 3))
-	)
-	(port
-		(pt 296 32)
-		(output)
-		(text "timeAndDate_Out[43..0]" (rect 0 0 119 12)(font "Arial" ))
-		(text "timeAndDate_Out[43..0]" (rect 175 27 294 39)(font "Arial" ))
-		(line (pt 296 32)(pt 280 32)(line_width 3))
-	)
-	(drawing
-		(rectangle (rect 16 16 280 128))
-	)
-)
-(symbol
 	(rect 1472 264 1504 296)
 	(text "GND" (rect 8 16 29 26)(font "Arial" (font_size 6)))
 	(text "inst6" (rect 3 21 25 38)(font "Intel Clear" )(invisible))
@@ -540,7 +490,7 @@ agreement for further details.
 (symbol
 	(rect 528 160 824 272)
 	(text "GenClockDCF" (rect 5 0 76 12)(font "Arial" ))
-	(text "inst2" (rect 8 96 31 108)(font "Arial" ))
+	(text "inst" (rect 8 96 25 108)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -623,12 +573,12 @@ agreement for further details.
 	(drawing
 		(rectangle (rect 16 16 280 96))
 	)
-	(annotation_block (parameter)(rect 568 24 784 160))
+	(annotation_block (parameter)(rect 824 24 1040 160))
 )
 (symbol
-	(rect 864 296 1120 440)
+	(rect 864 304 1120 448)
 	(text "dcf77_decoder" (rect 5 0 78 12)(font "Arial" ))
-	(text "inst" (rect 8 128 25 140)(font "Arial" ))
+	(text "inst12" (rect 8 128 36 145)(font "Intel Clear" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -682,6 +632,56 @@ agreement for further details.
 		(rectangle (rect 16 16 240 128))
 	)
 )
+(symbol
+	(rect 1144 72 1440 216)
+	(text "timeAndDateClock" (rect 5 0 97 12)(font "Arial" ))
+	(text "inst14" (rect 8 128 36 145)(font "Intel Clear" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clk" (rect 0 0 14 12)(font "Arial" ))
+		(text "clk" (rect 21 27 35 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "clkEn1Hz" (rect 0 0 46 12)(font "Arial" ))
+		(text "clkEn1Hz" (rect 21 43 67 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "nReset" (rect 0 0 35 12)(font "Arial" ))
+		(text "nReset" (rect 21 59 56 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "setTimeAndDate_in" (rect 0 0 95 12)(font "Arial" ))
+		(text "setTimeAndDate_in" (rect 21 75 116 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "timeAndDate_In[43..0]" (rect 0 0 110 12)(font "Arial" ))
+		(text "timeAndDate_In[43..0]" (rect 21 91 131 103)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 3))
+	)
+	(port
+		(pt 296 32)
+		(output)
+		(text "timeAndDate_Out[43..0]" (rect 0 0 119 12)(font "Arial" ))
+		(text "timeAndDate_Out[43..0]" (rect 175 27 294 39)(font "Arial" ))
+		(line (pt 296 32)(pt 280 32)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 280 128))
+	)
+)
 (connector
 	(pt 192 328)
 	(pt 504 328)
@@ -727,27 +727,6 @@ agreement for further details.
 	(pt 528 192)
 )
 (connector
-	(pt 1064 192)
-	(pt 1064 136)
-)
-(connector
-	(pt 1080 56)
-	(pt 1080 120)
-)
-(connector
-	(pt 1080 120)
-	(pt 1152 120)
-)
-(connector
-	(pt 1064 136)
-	(pt 1152 136)
-)
-(connector
-	(pt 1152 184)
-	(pt 1136 184)
-	(bus)
-)
-(connector
 	(pt 1496 56)
 	(pt 1496 184)
 )
@@ -790,23 +769,9 @@ agreement for further details.
 	(pt 1544 184)
 )
 (connector
-	(pt 1448 120)
-	(pt 1464 120)
-	(bus)
-)
-(connector
-	(pt 1464 312)
-	(pt 1464 120)
-	(bus)
-)
-(connector
 	(pt 1512 264)
 	(pt 1544 264)
 	(bus)
-)
-(connector
-	(pt 1080 56)
-	(pt 1496 56)
 )
 (connector
 	(pt 1496 56)
@@ -873,28 +838,8 @@ agreement for further details.
 	(pt 208 192)
 )
 (connector
-	(pt 192 400)
-	(pt 520 400)
-)
-(connector
-	(pt 1152 168)
-	(pt 1128 168)
-)
-(connector
-	(pt 1152 152)
-	(pt 1080 152)
-)
-(connector
 	(pt 1448 200)
 	(pt 1448 288)
-)
-(connector
-	(pt 1080 288)
-	(pt 1448 288)
-)
-(connector
-	(pt 1080 152)
-	(pt 1080 288)
 )
 (connector
 	(pt 1880 168)
@@ -985,77 +930,60 @@ agreement for further details.
 )
 (connector
 	(pt 840 208)
-	(pt 840 344)
+	(pt 840 352)
 )
 (connector
-	(pt 1136 328)
-	(pt 1120 328)
+	(pt 1136 336)
+	(pt 1120 336)
 	(bus)
 )
 (connector
-	(pt 1136 184)
-	(pt 1136 328)
-	(bus)
+	(pt 832 384)
+	(pt 864 384)
 )
 (connector
-	(pt 832 376)
-	(pt 864 376)
+	(pt 1128 352)
+	(pt 1120 352)
 )
 (connector
-	(pt 520 392)
-	(pt 864 392)
-)
-(connector
-	(pt 1128 168)
-	(pt 1128 344)
-)
-(connector
-	(pt 1128 344)
-	(pt 1120 344)
-)
-(connector
-	(pt 552 360)
-	(pt 864 360)
+	(pt 552 368)
+	(pt 864 368)
 )
 (connector
 	(pt 552 288)
-	(pt 552 360)
+	(pt 552 368)
 )
 (connector
-	(pt 856 328)
-	(pt 864 328)
+	(pt 856 336)
+	(pt 864 336)
 )
 (connector
 	(pt 856 56)
-	(pt 856 328)
+	(pt 856 336)
 )
 (connector
-	(pt 840 344)
-	(pt 864 344)
+	(pt 840 352)
+	(pt 864 352)
 )
 (connector
 	(pt 520 240)
-	(pt 520 392)
+	(pt 520 400)
 )
 (connector
-	(pt 520 392)
+	(pt 192 400)
 	(pt 520 400)
+)
+(connector
+	(pt 520 400)
+	(pt 864 400)
 )
 (connector
 	(pt 504 288)
 	(pt 552 288)
 )
 (connector
-	(pt 552 288)
-	(pt 1080 288)
-)
-(connector
 	(pt 504 56)
 	(pt 856 56)
-)
-(connector
-	(pt 856 56)
-	(pt 1080 56)
 )
 (connector
 	(pt 832 72)
@@ -1063,7 +991,75 @@ agreement for further details.
 )
 (connector
 	(pt 832 224)
-	(pt 832 376)
+	(pt 832 384)
+)
+(connector
+	(pt 1064 192)
+	(pt 1064 120)
+)
+(connector
+	(pt 1080 56)
+	(pt 1080 104)
+)
+(connector
+	(pt 1080 104)
+	(pt 1144 104)
+)
+(connector
+	(pt 1064 120)
+	(pt 1144 120)
+)
+(connector
+	(pt 1136 168)
+	(pt 1144 168)
+	(bus)
+)
+(connector
+	(pt 1464 312)
+	(pt 1464 104)
+	(bus)
+)
+(connector
+	(pt 1128 152)
+	(pt 1144 152)
+)
+(connector
+	(pt 1080 136)
+	(pt 1144 136)
+)
+(connector
+	(pt 1080 288)
+	(pt 1080 136)
+)
+(connector
+	(pt 1136 336)
+	(pt 1136 168)
+	(bus)
+)
+(connector
+	(pt 1128 352)
+	(pt 1128 152)
+)
+(connector
+	(pt 856 56)
+	(pt 1080 56)
+)
+(connector
+	(pt 1080 56)
+	(pt 1496 56)
+)
+(connector
+	(pt 552 288)
+	(pt 1080 288)
+)
+(connector
+	(pt 1080 288)
+	(pt 1448 288)
+)
+(connector
+	(pt 1440 104)
+	(pt 1464 104)
+	(bus)
 )
 (junction (pt 1080 56))
 (junction (pt 504 192))
@@ -1075,4 +1071,4 @@ agreement for further details.
 (junction (pt 1520 200))
 (junction (pt 464 360))
 (junction (pt 832 224))
-(junction (pt 520 392))
+(junction (pt 520 400))

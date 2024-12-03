@@ -1,0 +1,80 @@
+
+State Machine - |my_first_fpga|setClock:inst7|state
+Name state.finished1 state.getActTime state.setWeekday state.setYearHigh state.setYearLow state.setMonthHigh state.setMonthLow state.setDayHigh state.setDayLow state.setHourHigh state.setHourLow state.setMinuteHigh state.setMinuteLow state.idle state.finished2 
+state.idle 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.setMinuteLow 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 
+state.setMinuteHigh 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 
+state.setHourLow 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 
+state.setHourHigh 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 
+state.setDayLow 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 
+state.setDayHigh 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 
+state.setMonthLow 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 
+state.setMonthHigh 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 
+state.setYearLow 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 
+state.setYearHigh 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 
+state.setWeekday 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 
+state.getActTime 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 
+state.finished1 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+state.finished2 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+
+State Machine - |my_first_fpga|LCDsteuerung:inst8|state_R
+Name state_R.updateStates state_R.updateMinuteStart state_R.updateDCFenable state_R.updateYearLow state_R.updateYearHigh state_R.updateMonthLow state_R.updateMonthHigh state_R.updateTimezone state_R.updateWeekday state_R.updateDayHigh state_R.updateDayLow state_R.updateHourHigh state_R.updateHourLow state_R.updateMinHigh state_R.updateMinLow state_R.updateSecHigh state_R.updateSecLow state_R.check state_R.updateFrame state_R.writeFrame 
+state_R.writeFrame 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state_R.updateFrame 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state_R.check 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state_R.updateSecLow 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state_R.updateSecHigh 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state_R.updateMinLow 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state_R.updateMinHigh 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state_R.updateHourLow 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state_R.updateHourHigh 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state_R.updateDayLow 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state_R.updateDayHigh 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state_R.updateWeekday 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state_R.updateTimezone 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state_R.updateMonthHigh 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state_R.updateMonthLow 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state_R.updateYearHigh 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state_R.updateYearLow 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state_R.updateDCFenable 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state_R.updateMinuteStart 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state_R.updateStates 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |my_first_fpga|lcddriver:inst9|lcd_states
+Name lcd_states.rd_bf1 lcd_states.rd_bf0 lcd_states.wrcr1 lcd_states.wrcr0 lcd_states.wrad1 lcd_states.wrad0 lcd_states.shift1 lcd_states.shift0 lcd_states.blinkOff1 lcd_states.blinkOff0 lcd_states.blink1 lcd_states.blink0 lcd_states.mode1 lcd_states.mode0 lcd_states.clear1 lcd_states.clear0 lcd_states.onoff1 lcd_states.onoff0 lcd_states.set1 lcd_states.set0 lcd_states.init lcd_states.init7b lcd_states.init7a lcd_states.init6b lcd_states.init6a lcd_states.init5b lcd_states.init5a lcd_states.init4b lcd_states.init4a lcd_states.init3b lcd_states.init3a lcd_states.init2b lcd_states.init2a lcd_states.init1b lcd_states.init1a lcd_states.hold 
+lcd_states.hold 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+lcd_states.init1a 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+lcd_states.init1b 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+lcd_states.init2a 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+lcd_states.init2b 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+lcd_states.init3a 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+lcd_states.init3b 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+lcd_states.init4a 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+lcd_states.init4b 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+lcd_states.init5a 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+lcd_states.init5b 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+lcd_states.init6a 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.init6b 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.init7a 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.init7b 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.init 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.set0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.set1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.onoff0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.onoff1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.clear0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.clear1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.mode0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.mode1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.blink0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.blink1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.blinkOff0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.blinkOff1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.shift0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.shift1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.wrad0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.wrad1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.wrcr0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.wrcr1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.rd_bf0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+lcd_states.rd_bf1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 

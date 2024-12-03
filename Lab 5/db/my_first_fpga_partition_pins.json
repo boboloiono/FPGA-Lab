@@ -1,0 +1,73 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "LDC_Enable_out",
+					"strict" : false
+				},
+				{
+					"name" : "LCD_RW_out",
+					"strict" : false
+				},
+				{
+					"name" : "LCD_RS_out",
+					"strict" : false
+				},
+				{
+					"name" : "LCD_Data_IO[7]",
+					"strict" : false
+				},
+				{
+					"name" : "LCD_Data_IO[6]",
+					"strict" : false
+				},
+				{
+					"name" : "LCD_Data_IO[5]",
+					"strict" : false
+				},
+				{
+					"name" : "LCD_Data_IO[4]",
+					"strict" : false
+				},
+				{
+					"name" : "LCD_Data_IO[3]",
+					"strict" : false
+				},
+				{
+					"name" : "LCD_Data_IO[2]",
+					"strict" : false
+				},
+				{
+					"name" : "LCD_Data_IO[1]",
+					"strict" : false
+				},
+				{
+					"name" : "LCD_Data_IO[0]",
+					"strict" : false
+				},
+				{
+					"name" : "DIP1",
+					"strict" : false
+				},
+				{
+					"name" : "DIP4",
+					"strict" : false
+				},
+				{
+					"name" : "key[1]",
+					"strict" : false
+				},
+				{
+					"name" : "key[0]",
+					"strict" : false
+				},
+				{
+					"name" : "DCF77_Signal",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
