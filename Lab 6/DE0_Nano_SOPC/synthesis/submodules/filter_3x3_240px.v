@@ -43,202 +43,6 @@ module filter_3x3_240px #(
   parameter STATE2 = 2'b01;
   parameter STATE3 = 2'b10;
 
-  /*
-  reg [15:0] window[0:2][0:2];
-  reg [9:0] pixel_count;
-
-  always @(posedge clk) begin
-    if (wren) begin
-      window[0][0] <= window[0][1];
-      window[0][1] <= window[0][2];
-      window[0][2] <= q1;
-
-      window[1][0] <= window[1][1];
-      window[1][1] <= window[1][2];
-      window[1][2] <= q2;
-
-      window[2][0] <= window[2][1];
-      window[2][1] <= window[2][2];
-      window[2][2] <= q3;
-    end
-  end
-
-  always @(posedge clk or posedge reset) begin
-    if (reset) pixel_count <= 0;
-    else if (pixel_count < BLOCK_LENGTH - 1) pixel_count <= pixel_count + 1;
-    else pixel_count <= 0;
-  end
-  
-
-  // Define 3x3 matrix of RGB weights
-  wire [4:0] r00, r01, r02, r10, r11, r12, r20, r21, r22;
-  wire [5:0] g00, g01, g02, g10, g11, g12, g20, g21, g22;
-  wire [4:0] b00, b01, b02, b10, b11, b12, b20, b21, b22;
-
-  assign {r00, g00, b00} = window[0][0];
-  assign {r01, g01, b01} = window[0][1];
-  assign {r02, g02, b02} = window[0][2];
-  assign {r10, g10, b10} = window[1][0];
-  assign {r11, g11, b11} = window[1][1];
-  assign {r12, g12, b12} = window[1][2];
-  assign {r20, g20, b20} = window[2][0];
-  assign {r21, g21, b21} = window[2][1];
-  assign {r22, g22, b22} = window[2][2];
-*/
-  /*
-  // Declare states as parameters
-  parameter STATE1 = 2'b00;
-  parameter STATE2 = 2'b01;
-  parameter STATE3 = 2'b10;
-
-  // Declare state variables
-  reg [1:0] state, nxt_state;
-  
-  // memory output of ram
-  wire [15:0] q11, q12, q13, q21, q22, q23, q31, q32, q33;
-
-  // filter color data
-  reg [8:0] f_11_r, f_12_r, f_13_r, f_21_r, f_22_r, f_23_r, f_31_r, f_32_r, f_33_r;
-
-  reg [9:0] f_11_g, f_12_g, f_13_g, f_21_g, f_22_g, f_23_g, f_31_g, f_32_g, f_33_g;
-
-  reg [8:0] f_11_b, f_12_b, f_13_b, f_21_b, f_22_b, f_23_b, f_31_b, f_32_b, f_33_b;
-
-  // red
-  always @(*) begin
-    case (state)
-      STATE3: begin
-        f_11_r <= q11[15:11];
-        f_12_r <= q12[15:11];
-        f_13_r <= q13[15:11];
-
-        f_21_r <= q21[15:11];
-        f_22_r <= q22[15:11];
-        f_23_r <= q23[15:11];
-
-        f_31_r <= q31[15:11];
-        f_32_r <= q32[15:11];
-        f_33_r <= q33[15:11];
-      end
-      STATE1: begin
-        f_11_r <= q21[15:11];
-        f_12_r <= q22[15:11];
-        f_13_r <= q23[15:11];
-
-        f_21_r <= q31[15:11];
-        f_22_r <= q32[15:11];
-        f_23_r <= q33[15:11];
-
-        f_31_r <= q11[15:11];
-        f_32_r <= q12[15:11];
-        f_33_r <= q13[15:11];
-      end
-      STATE2: begin
-        f_11_r <= q31[15:11];
-        f_12_r <= q32[15:11];
-        f_13_r <= q33[15:11];
-
-        f_21_r <= q11[15:11];
-        f_22_r <= q12[15:11];
-        f_23_r <= q13[15:11];
-
-        f_31_r <= q21[15:11];
-        f_32_r <= q22[15:11];
-        f_33_r <= q23[15:11];
-      end
-    endcase
-  end
-
-  // green
-  always @(*) begin
-    case (state)
-      STATE3: begin
-        f_11_g <= q11[10:5];
-        f_12_g <= q12[10:5];
-        f_13_g <= q13[10:5];
-
-        f_21_g <= q21[10:5];
-        f_22_g <= q22[10:5];
-        f_23_g <= q23[10:5];
-
-        f_31_g <= q31[10:5];
-        f_32_g <= q32[10:5];
-        f_33_g <= q33[10:5];
-      end
-      STATE1: begin
-        f_11_g <= q21[10:5];
-        f_12_g <= q22[10:5];
-        f_13_g <= q23[10:5];
-
-        f_21_g <= q31[10:5];
-        f_22_g <= q32[10:5];
-        f_23_g <= q33[10:5];
-
-        f_31_g <= q11[10:5];
-        f_32_g <= q12[10:5];
-        f_33_g <= q13[10:5];
-      end
-      STATE2: begin
-        f_11_g <= q31[10:5];
-        f_12_g <= q32[10:5];
-        f_13_g <= q33[10:5];
-
-        f_21_g <= q11[10:5];
-        f_22_g <= q12[10:5];
-        f_23_g <= q13[10:5];
-
-        f_31_g <= q21[10:5];
-        f_32_g <= q22[10:5];
-        f_33_g <= q23[10:5];
-      end
-    endcase
-  end
-
-  // blue
-  always @(*) begin
-    case (state)
-      STATE3: begin
-        f_11_b <= q11[4:0];
-        f_12_b <= q12[4:0];
-        f_13_b <= q13[4:0];
-
-        f_21_b <= q21[4:0];
-        f_22_b <= q22[4:0];
-        f_23_b <= q23[4:0];
-
-        f_31_b <= q31[4:0];
-        f_32_b <= q32[4:0];
-        f_33_b <= q33[4:0];
-      end
-      STATE1: begin
-        f_11_b <= q21[4:0];
-        f_12_b <= q22[4:0];
-        f_13_b <= q23[4:0];
-
-        f_21_b <= q31[4:0];
-        f_22_b <= q32[4:0];
-        f_23_b <= q33[4:0];
-
-        f_31_b <= q11[4:0];
-        f_32_b <= q12[4:0];
-        f_33_b <= q13[4:0];
-      end
-      STATE2: begin
-        f_11_b <= q31[4:0];
-        f_12_b <= q32[4:0];
-        f_13_b <= q33[4:0];
-
-        f_21_b <= q11[4:0];
-        f_22_b <= q12[4:0];
-        f_23_b <= q13[4:0];
-
-        f_31_b <= q21[4:0];
-        f_32_b <= q22[4:0];
-        f_33_b <= q23[4:0];
-      end
-    endcase
-  end
-  */
   always @(posedge wren or posedge reset) begin
     if (reset) begin
       state <= STATE1;
@@ -259,8 +63,6 @@ module filter_3x3_240px #(
   assign wren2 = (wren == 1) & (state == STATE2);
   assign wren3 = (wren == 1) & (state == STATE3);
 
-
-
   // flag to determine the middle px
   wire flag_cursor_mid;
 
@@ -269,17 +71,7 @@ module filter_3x3_240px #(
 
   // address of each ram
   wire [7:0] addr11, addr12, addr13, addr21, addr22, addr23, addr31, addr32, addr33;
-  /*
-  assign addr11 = (wren==1 && wren1==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] - 1 : 8'hFF;
-  assign addr12 = (wren == 1 && wren1 == 1) ? cursor[7:0] : (flag_cursor_mid) ? cursor[7:0] : 8'hFF;
-  assign addr13 = (wren==1 && wren1==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : 8'hFF;
-  assign addr21 = (wren==1 && wren2==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] - 1 : 8'hFF;
-  assign addr22 = (wren == 1 && wren2 == 1) ? cursor[7:0] : (flag_cursor_mid) ? cursor[7:0] : 8'hFF;
-  assign addr23 = (wren==1 && wren2==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : 8'hFF;
-  assign addr31 = (wren==1 && wren3==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] - 1 : 8'hFF;
-  assign addr32 = (wren == 1 && wren3 == 1) ? cursor[7:0] : (flag_cursor_mid) ? cursor[7:0] : 8'hFF;
-  assign addr33 = (wren==1 && wren3==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : 8'hFF;
-  */
+
   assign addr11 = ((flag_cursor_mid == 1) & (wren == 0))? cursor % 240 - 1 : (wren1 == 1)? cursor % 240 : 8'hFF;
   assign addr12 = ((flag_cursor_mid == 1) & (wren == 0))? cursor % 240 + 0 : (wren1 == 1)? cursor % 240 : 8'hFF;
   assign addr13 = ((flag_cursor_mid == 1) & (wren == 0))? cursor % 240 + 1 : (wren1 == 1)? cursor % 240 : 8'hFF;
@@ -293,15 +85,12 @@ module filter_3x3_240px #(
   // memory output of ram
   wire [15:0] q11, q12, q13, q21, q22, q23, q31, q32, q33;
 
-
   // filter color data，RGB
   wire [8:0] f_11_r, f_12_r, f_13_r, f_21_r, f_22_r, f_23_r, f_31_r, f_32_r, f_33_r;
 
   wire [9:0] f_11_g, f_12_g, f_13_g, f_21_g, f_22_g, f_23_g, f_31_g, f_32_g, f_33_g;
 
   wire [8:0] f_11_b, f_12_b, f_13_b, f_21_b, f_22_b, f_23_b, f_31_b, f_32_b, f_33_b;
-
-  // 选择正确行的寄存值
 
   wire [15:0] d11, d12, d13, d21, d22, d23, d31, d32, d33;
 
@@ -315,8 +104,6 @@ module filter_3x3_240px #(
   assign d32 = (state == STATE3) ? q32 : (state == STATE1) ? q12 : q22;
   assign d33 = (state == STATE3) ? q33 : (state == STATE1) ? q13 : q23;
 
-
-  // 从每个 BRAM 的输出数据（q11, q12 等）提取 RGB 分量
   assign f_11_r = d11[15:11];
   assign f_12_r = d12[15:11];
   assign f_13_r = d13[15:11];
