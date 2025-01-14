@@ -246,6 +246,7 @@ DE0_Nano_SOPC DE0_Nano_SOPC_inst(
 							  .touch_panel_busy_external_connection_export      (LT24_ADC_BUSY )       //      touch_panel_busy_external_connection.export
 
                     );
+						  
 
 						 
 endmodule

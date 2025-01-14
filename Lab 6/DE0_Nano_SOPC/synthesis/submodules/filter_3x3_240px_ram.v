@@ -25,7 +25,7 @@ module filter_3x3_240px
     // control
     input wren,
     output wire d_rdy,
-    input [9:0] cursor;
+    input [9:0] cursor
 );
 	
 //To Do: filter the input image

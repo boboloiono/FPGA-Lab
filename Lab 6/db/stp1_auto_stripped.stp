@@ -1,50 +1,50 @@
-<session jtag_chain="USB-Blaster [USB-0]" jtag_device="@1: 10CL025(Y|Z)/EP3C25/EP4CE22 (0x020F30DD)" sof_file="">
+<session jtag_chain="USB-Blaster [USB-0]" jtag_device="@1: 10CL025(Y|Z)/EP3C25/EP4CE22 (0x020F30DD)" sof_file="../DE0_Nano_time_limited.sof">
   <display_tree gui_logging_enabled="1">
-    <display_branch instance="auto_signaltap_0" signal_set="signal_set: 2020/03/25 14:08:39  #0" trigger="trigger: 2020/03/25 14:14:18  #0"/>
+    <display_branch instance="auto_signaltap_0" signal_set="signal_set: 2024/12/10 17:58:58  #0" trigger="trigger: 2024/12/10 17:58:58  #1"/>
   </display_tree>
   <instance enabled="true" entity_name="sld_signaltap" is_auto_node="yes" is_expanded="true" name="auto_signaltap_0" source_file="sld_signaltap.vhd">
     <node_ip_info instance_id="0" mfg_id="110" node_id="0" version="6"/>
-    <signal_set is_expanded="true" name="signal_set: 2020/03/25 14:08:39  #0">
-      <clock name="auto_stp_external_clock_0" polarity="posedge" tap_mode="classic"/>
-      <config pipeline_level="0" ram_type="AUTO" reserved_data_nodes="0" reserved_storage_qualifier_nodes="0" reserved_trigger_nodes="0" sample_depth="128" trigger_in_enable="no" trigger_out_enable="no"/>
+    <signal_set is_expanded="true" name="signal_set: 2024/12/10 17:58:58  #0">
+      <clock name="CLOCK_50" polarity="posedge" tap_mode="probeonly"/>
+      <config pipeline_level="0" ram_type="AUTO" reserved_data_nodes="0" reserved_storage_qualifier_nodes="0" reserved_trigger_nodes="0" sample_depth="8192" trigger_in_enable="no" trigger_out_enable="no"/>
       <top_entity/>
       <signal_vec>
         <trigger_input_vec>
-          <wire name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|clk" tap_mode="classic"/>
-          <wire name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|altpll_sys_c0_clk" tap_mode="classic"/>
-          <wire name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|clk_50" tap_mode="classic"/>
+          <wire name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|rdfifo_done" tap_mode="probeonly"/>
+          <wire name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|state.STA_READ_DONE" tap_mode="probeonly"/>
+          <wire name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|state.STA_WRITE_DONE" tap_mode="probeonly"/>
         </trigger_input_vec>
         <data_input_vec>
-          <wire name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|clk" tap_mode="classic"/>
-          <wire name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|altpll_sys_c0_clk" tap_mode="classic"/>
-          <wire name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|clk_50" tap_mode="classic"/>
+          <wire name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|rdfifo_done" tap_mode="probeonly"/>
+          <wire name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|state.STA_READ_DONE" tap_mode="probeonly"/>
+          <wire name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|state.STA_WRITE_DONE" tap_mode="probeonly"/>
         </data_input_vec>
         <storage_qualifier_input_vec>
-          <wire name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|clk" tap_mode="classic"/>
-          <wire name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|altpll_sys_c0_clk" tap_mode="classic"/>
-          <wire name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|clk_50" tap_mode="classic"/>
+          <wire name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|rdfifo_done" tap_mode="probeonly"/>
+          <wire name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|state.STA_READ_DONE" tap_mode="probeonly"/>
+          <wire name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|state.STA_WRITE_DONE" tap_mode="probeonly"/>
         </storage_qualifier_input_vec>
       </signal_vec>
       <presentation>
         <unified_setup_data_view>
-          <node data_index="2" duplicate_name_allowed="false" is_data_input="true" is_node_valid="true" is_selected="false" is_storage_input="true" is_trigger_input="true" name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|clk_50" storage_index="2" tap_mode="classic" trigger_index="2" type="unknown"/>
-          <node data_index="1" duplicate_name_allowed="false" is_data_input="true" is_node_valid="false" is_selected="false" is_storage_input="true" is_trigger_input="true" name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|altpll_sys_c0_clk" storage-1="rising edge" storage-2="falling edge" storage_index="1" tap_mode="classic" trigger_index="1" type="unknown"/>
-          <node data_index="0" duplicate_name_allowed="false" is_data_input="true" is_node_valid="true" is_selected="false" is_storage_input="true" is_trigger_input="true" name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|clk" storage_index="0" tap_mode="classic" trigger_index="0" type="unknown"/>
+          <node data_index="0" duplicate_name_allowed="false" is_data_input="true" is_node_valid="true" is_selected="false" is_storage_input="true" is_trigger_input="true" level-0="dont_care" name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|rdfifo_done" pwr_level-0="dont_care" pwr_storage-0="dont_care" pwr_storage-1="dont_care" pwr_storage-2="dont_care" storage-0="dont_care" storage-1="dont_care" storage-2="dont_care" storage_index="0" tap_mode="probeonly" trigger_index="0" type="unknown"/>
+          <node data_index="1" duplicate_name_allowed="false" is_data_input="true" is_node_valid="true" is_selected="false" is_storage_input="true" is_trigger_input="true" level-0="dont_care" name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|state.STA_READ_DONE" pwr_level-0="dont_care" pwr_storage-0="dont_care" pwr_storage-1="dont_care" pwr_storage-2="dont_care" storage-0="dont_care" storage-1="dont_care" storage-2="dont_care" storage_index="1" tap_mode="probeonly" trigger_index="1" type="unknown"/>
+          <node data_index="2" duplicate_name_allowed="false" is_data_input="true" is_node_valid="true" is_selected="false" is_storage_input="true" is_trigger_input="true" level-0="dont_care" name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|state.STA_WRITE_DONE" pwr_level-0="dont_care" pwr_storage-0="dont_care" pwr_storage-1="dont_care" pwr_storage-2="dont_care" storage-0="dont_care" storage-1="dont_care" storage-2="dont_care" storage_index="2" tap_mode="probeonly" trigger_index="2" type="unknown"/>
         </unified_setup_data_view>
         <data_view>
-          <net data_index="2" duplicate_name_allowed="false" is_data_input="true" is_node_valid="true" is_selected="false" is_storage_input="true" is_trigger_input="true" name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|clk_50" storage_index="2" tap_mode="classic" trigger_index="2" type="unknown"/>
-          <net data_index="1" duplicate_name_allowed="false" is_data_input="true" is_node_valid="false" is_selected="false" is_storage_input="true" is_trigger_input="true" name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|altpll_sys_c0_clk" storage-1="rising edge" storage-2="falling edge" storage_index="1" tap_mode="classic" trigger_index="1" type="unknown"/>
-          <net data_index="0" duplicate_name_allowed="false" is_data_input="true" is_node_valid="true" is_selected="false" is_storage_input="true" is_trigger_input="true" name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|clk" storage_index="0" tap_mode="classic" trigger_index="0" type="unknown"/>
+          <net data_index="0" duplicate_name_allowed="false" is_data_input="true" is_node_valid="true" is_selected="false" is_storage_input="true" is_trigger_input="true" level-0="dont_care" name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|rdfifo_done" pwr_level-0="dont_care" pwr_storage-0="dont_care" pwr_storage-1="dont_care" pwr_storage-2="dont_care" storage-0="dont_care" storage-1="dont_care" storage-2="dont_care" storage_index="0" tap_mode="probeonly" trigger_index="0" type="unknown"/>
+          <net data_index="1" duplicate_name_allowed="false" is_data_input="true" is_node_valid="true" is_selected="false" is_storage_input="true" is_trigger_input="true" level-0="dont_care" name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|state.STA_READ_DONE" pwr_level-0="dont_care" pwr_storage-0="dont_care" pwr_storage-1="dont_care" pwr_storage-2="dont_care" storage-0="dont_care" storage-1="dont_care" storage-2="dont_care" storage_index="1" tap_mode="probeonly" trigger_index="1" type="unknown"/>
+          <net data_index="2" duplicate_name_allowed="false" is_data_input="true" is_node_valid="true" is_selected="false" is_storage_input="true" is_trigger_input="true" level-0="dont_care" name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|state.STA_WRITE_DONE" pwr_level-0="dont_care" pwr_storage-0="dont_care" pwr_storage-1="dont_care" pwr_storage-2="dont_care" storage-0="dont_care" storage-1="dont_care" storage-2="dont_care" storage_index="2" tap_mode="probeonly" trigger_index="2" type="unknown"/>
         </data_view>
         <setup_view>
-          <net data_index="2" duplicate_name_allowed="false" is_data_input="true" is_node_valid="true" is_selected="false" is_storage_input="true" is_trigger_input="true" name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|clk_50" storage_index="2" tap_mode="classic" trigger_index="2" type="unknown"/>
-          <net data_index="1" duplicate_name_allowed="false" is_data_input="true" is_node_valid="false" is_selected="false" is_storage_input="true" is_trigger_input="true" name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|altpll_sys_c0_clk" storage-1="rising edge" storage-2="falling edge" storage_index="1" tap_mode="classic" trigger_index="1" type="unknown"/>
-          <net data_index="0" duplicate_name_allowed="false" is_data_input="true" is_node_valid="true" is_selected="false" is_storage_input="true" is_trigger_input="true" name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|clk" storage_index="0" tap_mode="classic" trigger_index="0" type="unknown"/>
+          <net data_index="0" duplicate_name_allowed="false" is_data_input="true" is_node_valid="true" is_selected="false" is_storage_input="true" is_trigger_input="true" level-0="dont_care" name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|rdfifo_done" pwr_level-0="dont_care" pwr_storage-0="dont_care" pwr_storage-1="dont_care" pwr_storage-2="dont_care" storage-0="dont_care" storage-1="dont_care" storage-2="dont_care" storage_index="0" tap_mode="probeonly" trigger_index="0" type="unknown"/>
+          <net data_index="1" duplicate_name_allowed="false" is_data_input="true" is_node_valid="true" is_selected="false" is_storage_input="true" is_trigger_input="true" level-0="dont_care" name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|state.STA_READ_DONE" pwr_level-0="dont_care" pwr_storage-0="dont_care" pwr_storage-1="dont_care" pwr_storage-2="dont_care" storage-0="dont_care" storage-1="dont_care" storage-2="dont_care" storage_index="1" tap_mode="probeonly" trigger_index="1" type="unknown"/>
+          <net data_index="2" duplicate_name_allowed="false" is_data_input="true" is_node_valid="true" is_selected="false" is_storage_input="true" is_trigger_input="true" level-0="dont_care" name="DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|state.STA_WRITE_DONE" pwr_level-0="dont_care" pwr_storage-0="dont_care" pwr_storage-1="dont_care" pwr_storage-2="dont_care" storage-0="dont_care" storage-1="dont_care" storage-2="dont_care" storage_index="2" tap_mode="probeonly" trigger_index="2" type="unknown"/>
         </setup_view>
         <trigger_in_editor/>
         <trigger_out_editor/>
       </presentation>
-      <trigger CRC="70F283D9" attribute_mem_mode="false" gap_record="true" is_expanded="true" name="trigger: 2020/03/25 14:14:18  #0" position="pre" power_up_trigger_mode="false" record_data_gap="true" segment_size="1" storage_mode="start_stop" storage_qualifier_disabled="no" storage_qualifier_port_is_pin="true" storage_qualifier_port_name="auto_stp_external_storage_qualifier" storage_qualifier_port_tap_mode="classic" trigger_type="circular">
+      <trigger CRC="74831416" attribute_mem_mode="false" gap_record="true" is_expanded="true" name="trigger: 2024/12/10 17:58:58  #1" position="pre" power_up_trigger_mode="false" record_data_gap="true" segment_size="1024" storage_mode="off" storage_qualifier_disabled="no" storage_qualifier_port_is_pin="false" storage_qualifier_port_name="auto_stp_external_storage_qualifier" storage_qualifier_port_tap_mode="classic" trigger_type="circular">
         <power_up_trigger position="pre" storage_qualifier_disabled="no"/>
         <events use_custom_flow_control="no">
           <level enabled="yes" name="condition1" type="basic">
@@ -62,16 +62,12 @@
             </power_up>
             <op_node/>
           </storage_qualifier_level>
-          <storage_qualifier_level type="basic">'DE0_Nano_SOPC:DE0_Nano_SOPC_inst|altpll_sys_c0_clk' == rising edge
-            
-            
+          <storage_qualifier_level type="basic">
             <power_up>
             </power_up>
             <op_node/>
           </storage_qualifier_level>
-          <storage_qualifier_level type="basic">'DE0_Nano_SOPC:DE0_Nano_SOPC_inst|altpll_sys_c0_clk' == falling edge
-            
-            
+          <storage_qualifier_level type="basic">
             <power_up>
             </power_up>
             <op_node/>
@@ -86,23 +82,27 @@
       <single attribute="setup horizontal scroll position" value="0"/>
       <single attribute="setup vertical scroll position" value="0"/>
       <single attribute="zoom level denominator" value="1"/>
-      <single attribute="zoom level numerator" value="1"/>
+      <single attribute="zoom level numerator" value="128"/>
       <single attribute="zoom offset denominator" value="1"/>
-      <single attribute="zoom offset numerator" value="130944"/>
+      <single attribute="zoom offset numerator" value="0"/>
     </position_info>
   </instance>
   <mnemonics/>
   <static_plugin_mnemonics/>
+  <embedded_sof_files>
+  </embedded_sof_files>
   <global_info>
     <single attribute="active instance" value="0"/>
     <single attribute="config widget visible" value="1"/>
     <single attribute="data log widget visible" value="1"/>
+    <single attribute="hierarchy widget height" value="154"/>
     <single attribute="hierarchy widget visible" value="1"/>
     <single attribute="instance widget visible" value="1"/>
     <single attribute="jtag widget visible" value="1"/>
     <single attribute="lock mode" value="0"/>
-    <multi attribute="column width" size="23" value="34,34,610,74,68,78,95,96,98,98,88,88,110,101,101,101,101,101,101,101,101,107,78"/>
-    <multi attribute="frame size" size="2" value="1920,1001"/>
-    <multi attribute="jtag widget size" size="2" value="398,146"/>
+    <single attribute="sof manager visible" value="1"/>
+    <multi attribute="column width" size="23" value="34,79,225,74,68,78,95,96,98,98,88,88,110,101,101,101,101,101,101,101,101,107,78"/>
+    <multi attribute="frame size" size="2" value="1920,991"/>
+    <multi attribute="jtag widget size" size="2" value="713,231"/>
   </global_info>
 </session>

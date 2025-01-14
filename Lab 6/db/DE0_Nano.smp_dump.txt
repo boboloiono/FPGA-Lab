@@ -49,6 +49,12 @@ state.STA_READ_DONE 0 1 0 1 0
 state.STA_WRITE 1 0 0 1 0 
 state.STA_WRITE_DONE 0 0 0 1 1 
 
+State Machine - |DE0_Nano|DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|filter_3x3_240px:f0|state
+Name state.STATE1 state.STATE3 state.STATE2 
+state.STATE1 0 0 0 
+state.STATE2 1 0 1 
+state.STATE3 1 1 0 
+
 State Machine - |DE0_Nano|DE0_Nano_SOPC:DE0_Nano_SOPC_inst|CI_custom_master:new_component_0|write_master:m1|scfifo:the_user_to_master_fifo|a_fffifo:subfifo|a_fefifo:fifo_state|sm_emptyfull
 Name state_middle state_full state_empty 
 state_empty 0 0 0 

@@ -1,15 +1,13 @@
-module filter_3x3_240px
-#(
+module filter_3x3_240px #(
     parameter BLOCK_LENGTH = 240,
-    parameter FILTER_SIZE = 3,
+    parameter FILTER_SIZE  = 3,
 
     // Filter weights
     parameter WA3 = 0,
     parameter WB3 = -1,
     parameter WA1 = 4,
     parameter DIV = 1
-)
-(
+) (
     // System
     input reset,
     input clk,
@@ -23,215 +21,430 @@ module filter_3x3_240px
     output wire d_rdy,
     input [9:0] cursor
 );
+  // Cursors for delay
+  reg [9:0] cursor1, cursor2, cursor3;
 
-    // Address and Write Enable for RAM
-    reg [9:0] addr11, addr12, addr13;
-    reg [9:0] addr21, addr22, addr23;
-    reg [9:0] addr31, addr32, addr33;
-
-    reg wren1, wren2, wren3;
-
-    // RAM Outputs
-    wire [15:0] q11, q12, q13;
-    wire [15:0] q21, q22, q23;
-    wire [15:0] q31, q32, q33;
-
-    // RAM Instantiation
-    ram ram11 (.address(addr11), .clock(clk), .data(d_in), .wren(wren1), .q(q11));
-    ram ram12 (.address(addr12), .clock(clk), .data(d_in), .wren(wren1), .q(q12));
-    ram ram13 (.address(addr13), .clock(clk), .data(d_in), .wren(wren1), .q(q13));
-    ram ram21 (.address(addr21), .clock(clk), .data(d_in), .wren(wren2), .q(q21));
-    ram ram22 (.address(addr22), .clock(clk), .data(d_in), .wren(wren2), .q(q22));
-    ram ram23 (.address(addr23), .clock(clk), .data(d_in), .wren(wren2), .q(q23));
-    ram ram31 (.address(addr31), .clock(clk), .data(d_in), .wren(wren3), .q(q31));
-    ram ram32 (.address(addr32), .clock(clk), .data(d_in), .wren(wren3), .q(q32));
-    ram ram33 (.address(addr33), .clock(clk), .data(d_in), .wren(wren3), .q(q33));
-
-    // Write Address and Enable Logic
-    always @(posedge clk or posedge reset) begin
-        if (reset) begin
-            addr11 <= 0; addr12 <= 0; addr13 <= 0;
-            addr21 <= 0; addr22 <= 0; addr23 <= 0;
-            addr31 <= 0; addr32 <= 0; addr33 <= 0;
-            wren1 <= 0; wren2 <= 0; wren3 <= 0;
-        end else if (wren) begin
-            // Update RAM addresses
-            addr11 <= cursor;
-            addr12 <= cursor + 1;
-            addr13 <= cursor + 2;
-
-            addr21 <= cursor + BLOCK_LENGTH;
-            addr22 <= cursor + BLOCK_LENGTH + 1;
-            addr23 <= cursor + BLOCK_LENGTH + 2;
-
-            addr31 <= cursor + 2 * BLOCK_LENGTH;
-            addr32 <= cursor + 2 * BLOCK_LENGTH + 1;
-            addr33 <= cursor + 2 * BLOCK_LENGTH + 2;
-
-            // Enable write for all rows
-            wren1 <= 1;
-            wren2 <= 1;
-            wren3 <= 1;
-        end else begin
-            wren1 <= 0;
-            wren2 <= 0;
-            wren3 <= 0;
-        end
+  // Update cursors with delays
+  always @(posedge clk or posedge reset) begin
+    if (reset) begin
+      cursor1 <= 0;
+      cursor2 <= 0;
+      cursor3 <= 0;
+    end else begin
+      cursor1 <= cursor;
+      cursor2 <= cursor1;
+      cursor3 <= cursor2;
     end
+  end
 
-    // Define 3x3 matrix of RGB weights
-    wire [4:0] r00, r01, r02, r10, r11, r12, r20, r21, r22;
-    wire [5:0] g00, g01, g02, g10, g11, g12, g20, g21, g22;
-    wire [4:0] b00, b01, b02, b10, b11, b12, b20, b21, b22;
+  reg [1:0] state;
 
-    assign {r00, g00, b00} = q11;
-    assign {r01, g01, b01} = q12;
-    assign {r02, g02, b02} = q13;
-    assign {r10, g10, b10} = q21;
-    assign {r11, g11, b11} = q22;
-    assign {r12, g12, b12} = q23;
-    assign {r20, g20, b20} = q31;
-    assign {r21, g21, b21} = q32;
-    assign {r22, g22, b22} = q33;
+  parameter STATE1 = 2'b00;
+  parameter STATE2 = 2'b01;
+  parameter STATE3 = 2'b10;
 
-    // Filtered RGB
-    wire [10:0] filtered_r, filtered_g, filtered_b;
-    assign filtered_r = (r00 * WA3 + r01 * WB3 + r02 * WA3 +
-                         r10 * WB3 + r11 * WA1 + r12 * WB3 +
-                         r20 * WA3 + r21 * WB3 + r22 * WA3) / DIV;
+  /*
+  reg [15:0] window[0:2][0:2];
+  reg [9:0] pixel_count;
 
-    assign filtered_g = (g00 * WA3 + g01 * WB3 + g02 * WA3 +
-                         g10 * WB3 + g11 * WA1 + g12 * WB3 +
-                         g20 * WA3 + g21 * WB3 + g22 * WA3) / DIV;
+  always @(posedge clk) begin
+    if (wren) begin
+      window[0][0] <= window[0][1];
+      window[0][1] <= window[0][2];
+      window[0][2] <= q1;
 
-    assign filtered_b = (b00 * WA3 + b01 * WB3 + b02 * WA3 +
-                         b10 * WB3 + b11 * WA1 + b12 * WB3 +
-                         b20 * WA3 + b21 * WB3 + b22 * WA3) / DIV;
+      window[1][0] <= window[1][1];
+      window[1][1] <= window[1][2];
+      window[1][2] <= q2;
 
-    // RGB data after filtering
-    wire [15:0] filtered_data;
-    assign filtered_data[15:11] = filtered_r[4:0];
-    assign filtered_data[10:5] = filtered_g[5:0];
-    assign filtered_data[4:0] = filtered_b[4:0];
-
-    // Output signals
-    assign d_out = filtered_data;
-    assign d_rdy = !wren && (cursor == addr11);
-endmodule
-
-/*module filter_3x3_240px
-#(
-    parameter BLOCK_LENGTH = 240,
-    parameter FILTER_SIZE = 3,
-
-    // weight of each pixel, change these parameters to make difference effect of filter
-    // |WA3|WB3|WA3|
-    // |WB3|WA1|WB3|
-    // |WA3|WB3|WA3|
-    parameter WA3 = 0,
-    parameter WB3 = -1,
-    parameter WA1 = 4,
-    parameter DIV = 1
-
-)
-(
-    // system
-    input	reset,
-    input	clk,
-
-    // io
-    input [15:0] d_in,
-    output wire [15:0] d_out,
-
-    // control
-    input wren,
-    output wire d_rdy,
-    input [9:0] cursor
-);
-	
-//To Do: filter the input image
-//	- increase efficiency by eliminating redundancy
-//	- read each clock cycle a new line of pixels (except for the first three rows, since you need three rows to start filtering (because of the 3x3 filter))
-//	- keep the two already loaded lines for reuse
-//	- if necessary use an additional pointer to keep track of your first input pixel of the image
-//	- be aware that there could be timing issues:
-//	- synchronize your internal pointer with the custom master pointer
-//	- validate your design via SignalTap
-		
-	// 3 cursors delay, because of the ram required 3 clk cycle to output the data to 'q'
-    reg [9:0] cursor1, cursor2, cursor3;
-
-	reg [15:0] row0 [0:BLOCK_LENGTH-1];
-	reg [15:0] row1 [0:BLOCK_LENGTH-1];
-	reg [15:0] row2 [0:BLOCK_LENGTH-1];
-	
-    always @(posedge clk) begin
-        if (reset) begin
-            cursor1 <= 0;
-            cursor2 <= 0;
-            cursor3 <= 0;
-        end else begin
-            cursor1 <= cursor;
-            cursor2 <= cursor1;
-            cursor3 <= cursor2;
-        end
+      window[2][0] <= window[2][1];
+      window[2][1] <= window[2][2];
+      window[2][2] <= q3;
     end
-	
-	// update reg, every time only one pixel is added to reg
-    integer i;
-    always @(posedge clk) begin
-        if (wren) begin
-            // each data moves up once
-            for (i = 0; i < BLOCK_LENGTH-1; i = i + 1) begin
-                row0[i] <= row0[i + 1];
-                row1[i] <= row1[i + 1];
-                row2[i] <= row2[i + 1];
-            end
-            row0[BLOCK_LENGTH-1] <= row1[0];
-            row1[BLOCK_LENGTH-1] <= row2[0];
-            row2[BLOCK_LENGTH-1] <= d_in;
-        end
-    end
-			   
-	// define 3x3 matrics of RGB weights
-    wire [4:0] r00, r01, r02, r10, r11, r12, r20, r21, r22;
-    wire [5:0] g00, g01, g02, g10, g11, g12, g20, g21, g22;
-    wire [4:0] b00, b01, b02, b10, b11, b12, b20, b21, b22;
+  end
 
-    assign {r00, g00, b00} = row0[cursor3];
-    assign {r01, g01, b01} = row0[cursor3 + 1];
-    assign {r02, g02, b02} = row0[cursor3 + 2];
-    assign {r10, g10, b10} = row1[cursor3];
-    assign {r11, g11, b11} = row1[cursor3 + 1];
-    assign {r12, g12, b12} = row1[cursor3 + 2];
-    assign {r20, g20, b20} = row2[cursor3];
-    assign {r21, g21, b21} = row2[cursor3 + 1];
-    assign {r22, g22, b22} = row2[cursor3 + 2];
+  always @(posedge clk or posedge reset) begin
+    if (reset) pixel_count <= 0;
+    else if (pixel_count < BLOCK_LENGTH - 1) pixel_count <= pixel_count + 1;
+    else pixel_count <= 0;
+  end
+  
 
-	// filtered RGB
-    wire [10:0] filtered_r, filtered_g, filtered_b;
-    
-    assign filtered_r = (r00 * WA3 + r01 * WB3 + r02 * WA3 +
-                         r10 * WB3 + r11 * WA1 + r12 * WB3 +
-                         r20 * WA3 + r21 * WB3 + r22 * WA3) / DIV;
+  // Define 3x3 matrix of RGB weights
+  wire [4:0] r00, r01, r02, r10, r11, r12, r20, r21, r22;
+  wire [5:0] g00, g01, g02, g10, g11, g12, g20, g21, g22;
+  wire [4:0] b00, b01, b02, b10, b11, b12, b20, b21, b22;
 
-    assign filtered_g = (g00 * WA3 + g01 * WB3 + g02 * WA3 +
-                         g10 * WB3 + g11 * WA1 + g12 * WB3 +
-                         g20 * WA3 + g21 * WB3 + g22 * WA3) / DIV;
-
-    assign filtered_b = (b00 * WA3 + b01 * WB3 + b02 * WA3 +
-                         b10 * WB3 + b11 * WA1 + b12 * WB3 +
-                         b20 * WA3 + b21 * WB3 + b22 * WA3) / DIV;
-
-    // RGB data after filtered
-    wire [15:0] filtered_data;
-    assign filtered_data[15:11] = filtered_r[4:0];
-    assign filtered_data[10:5] = filtered_g[5:0];
-    assign filtered_data[4:0] = filtered_b[4:0];
-
-    // data ready signal for write_filter_tb
-    assign d_out = filtered_data;
-    assign d_rdy = (wren == 0) & ((cursor == cursor3));
-	
-endmodule
+  assign {r00, g00, b00} = window[0][0];
+  assign {r01, g01, b01} = window[0][1];
+  assign {r02, g02, b02} = window[0][2];
+  assign {r10, g10, b10} = window[1][0];
+  assign {r11, g11, b11} = window[1][1];
+  assign {r12, g12, b12} = window[1][2];
+  assign {r20, g20, b20} = window[2][0];
+  assign {r21, g21, b21} = window[2][1];
+  assign {r22, g22, b22} = window[2][2];
 */
+  /*
+  // Declare states as parameters
+  parameter STATE1 = 2'b00;
+  parameter STATE2 = 2'b01;
+  parameter STATE3 = 2'b10;
+
+  // Declare state variables
+  reg [1:0] state, nxt_state;
+  
+  // memory output of ram
+  wire [15:0] q11, q12, q13, q21, q22, q23, q31, q32, q33;
+
+  // filter color data
+  reg [8:0] f_11_r, f_12_r, f_13_r, f_21_r, f_22_r, f_23_r, f_31_r, f_32_r, f_33_r;
+
+  reg [9:0] f_11_g, f_12_g, f_13_g, f_21_g, f_22_g, f_23_g, f_31_g, f_32_g, f_33_g;
+
+  reg [8:0] f_11_b, f_12_b, f_13_b, f_21_b, f_22_b, f_23_b, f_31_b, f_32_b, f_33_b;
+
+  // red
+  always @(*) begin
+    case (state)
+      STATE3: begin
+        f_11_r <= q11[15:11];
+        f_12_r <= q12[15:11];
+        f_13_r <= q13[15:11];
+
+        f_21_r <= q21[15:11];
+        f_22_r <= q22[15:11];
+        f_23_r <= q23[15:11];
+
+        f_31_r <= q31[15:11];
+        f_32_r <= q32[15:11];
+        f_33_r <= q33[15:11];
+      end
+      STATE1: begin
+        f_11_r <= q21[15:11];
+        f_12_r <= q22[15:11];
+        f_13_r <= q23[15:11];
+
+        f_21_r <= q31[15:11];
+        f_22_r <= q32[15:11];
+        f_23_r <= q33[15:11];
+
+        f_31_r <= q11[15:11];
+        f_32_r <= q12[15:11];
+        f_33_r <= q13[15:11];
+      end
+      STATE2: begin
+        f_11_r <= q31[15:11];
+        f_12_r <= q32[15:11];
+        f_13_r <= q33[15:11];
+
+        f_21_r <= q11[15:11];
+        f_22_r <= q12[15:11];
+        f_23_r <= q13[15:11];
+
+        f_31_r <= q21[15:11];
+        f_32_r <= q22[15:11];
+        f_33_r <= q23[15:11];
+      end
+    endcase
+  end
+
+  // green
+  always @(*) begin
+    case (state)
+      STATE3: begin
+        f_11_g <= q11[10:5];
+        f_12_g <= q12[10:5];
+        f_13_g <= q13[10:5];
+
+        f_21_g <= q21[10:5];
+        f_22_g <= q22[10:5];
+        f_23_g <= q23[10:5];
+
+        f_31_g <= q31[10:5];
+        f_32_g <= q32[10:5];
+        f_33_g <= q33[10:5];
+      end
+      STATE1: begin
+        f_11_g <= q21[10:5];
+        f_12_g <= q22[10:5];
+        f_13_g <= q23[10:5];
+
+        f_21_g <= q31[10:5];
+        f_22_g <= q32[10:5];
+        f_23_g <= q33[10:5];
+
+        f_31_g <= q11[10:5];
+        f_32_g <= q12[10:5];
+        f_33_g <= q13[10:5];
+      end
+      STATE2: begin
+        f_11_g <= q31[10:5];
+        f_12_g <= q32[10:5];
+        f_13_g <= q33[10:5];
+
+        f_21_g <= q11[10:5];
+        f_22_g <= q12[10:5];
+        f_23_g <= q13[10:5];
+
+        f_31_g <= q21[10:5];
+        f_32_g <= q22[10:5];
+        f_33_g <= q23[10:5];
+      end
+    endcase
+  end
+
+  // blue
+  always @(*) begin
+    case (state)
+      STATE3: begin
+        f_11_b <= q11[4:0];
+        f_12_b <= q12[4:0];
+        f_13_b <= q13[4:0];
+
+        f_21_b <= q21[4:0];
+        f_22_b <= q22[4:0];
+        f_23_b <= q23[4:0];
+
+        f_31_b <= q31[4:0];
+        f_32_b <= q32[4:0];
+        f_33_b <= q33[4:0];
+      end
+      STATE1: begin
+        f_11_b <= q21[4:0];
+        f_12_b <= q22[4:0];
+        f_13_b <= q23[4:0];
+
+        f_21_b <= q31[4:0];
+        f_22_b <= q32[4:0];
+        f_23_b <= q33[4:0];
+
+        f_31_b <= q11[4:0];
+        f_32_b <= q12[4:0];
+        f_33_b <= q13[4:0];
+      end
+      STATE2: begin
+        f_11_b <= q31[4:0];
+        f_12_b <= q32[4:0];
+        f_13_b <= q33[4:0];
+
+        f_21_b <= q11[4:0];
+        f_22_b <= q12[4:0];
+        f_23_b <= q13[4:0];
+
+        f_31_b <= q21[4:0];
+        f_32_b <= q22[4:0];
+        f_33_b <= q23[4:0];
+      end
+    endcase
+  end
+  */
+  always @(posedge wren or posedge reset) begin
+    if (reset) begin
+      state <= STATE1;
+    end else begin
+      case (state)
+        STATE1:  state <= STATE2;
+        STATE2:  state <= STATE3;
+        STATE3:  state <= STATE1;
+        default: state <= STATE1;
+      endcase
+    end
+  end
+
+  // writing enable signal for each 3 row
+  wire wren1, wren2, wren3;
+
+  assign wren1 = (wren == 1) & (state == STATE1);
+  assign wren2 = (wren == 1) & (state == STATE2);
+  assign wren3 = (wren == 1) & (state == STATE3);
+
+
+
+  // flag to determine the middle px
+  wire flag_cursor_mid;
+
+  assign flag_cursor_mid = (cursor > 0) & (cursor < BLOCK_LENGTH);
+
+
+  // address of each ram
+  wire [7:0] addr11, addr12, addr13, addr21, addr22, addr23, addr31, addr32, addr33;
+  /*
+  assign addr11 = (wren==1 && wren1==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] - 1 : 8'hFF;
+  assign addr12 = (wren == 1 && wren1 == 1) ? cursor[7:0] : (flag_cursor_mid) ? cursor[7:0] : 8'hFF;
+  assign addr13 = (wren==1 && wren1==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : 8'hFF;
+  assign addr21 = (wren==1 && wren2==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] - 1 : 8'hFF;
+  assign addr22 = (wren == 1 && wren2 == 1) ? cursor[7:0] : (flag_cursor_mid) ? cursor[7:0] : 8'hFF;
+  assign addr23 = (wren==1 && wren2==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : 8'hFF;
+  assign addr31 = (wren==1 && wren3==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] - 1 : 8'hFF;
+  assign addr32 = (wren == 1 && wren3 == 1) ? cursor[7:0] : (flag_cursor_mid) ? cursor[7:0] : 8'hFF;
+  assign addr33 = (wren==1 && wren3==1 )? cursor[7:0] : ( flag_cursor_mid )? cursor[7:0] + 1 : 8'hFF;
+  */
+  assign addr11 = ((flag_cursor_mid == 1) & (wren == 0))? cursor % 240 - 1 : (wren1 == 1)? cursor % 240 : 8'hFF;
+  assign addr12 = ((flag_cursor_mid == 1) & (wren == 0))? cursor % 240 + 0 : (wren1 == 1)? cursor % 240 : 8'hFF;
+  assign addr13 = ((flag_cursor_mid == 1) & (wren == 0))? cursor % 240 + 1 : (wren1 == 1)? cursor % 240 : 8'hFF;
+  assign addr21 = ((flag_cursor_mid == 1) & (wren == 0))? cursor % 240 - 1 : (wren2 == 1)? cursor % 240 : 8'hFF;
+  assign addr22 = ((flag_cursor_mid == 1) & (wren == 0))? cursor % 240 + 0 : (wren2 == 1)? cursor % 240 : 8'hFF;
+  assign addr23 = ((flag_cursor_mid == 1) & (wren == 0))? cursor % 240 + 1 : (wren2 == 1)? cursor % 240 : 8'hFF;
+  assign addr31 = ((flag_cursor_mid == 1) & (wren == 0))? cursor % 240 - 1 : (wren3 == 1)? cursor % 240 : 8'hFF;
+  assign addr32 = ((flag_cursor_mid == 1) & (wren == 0))? cursor % 240 + 0 : (wren3 == 1)? cursor % 240 : 8'hFF;
+  assign addr33 = ((flag_cursor_mid == 1) & (wren == 0))? cursor % 240 + 1 : (wren3 == 1)? cursor % 240 : 8'hFF;
+
+  // memory output of ram
+  wire [15:0] q11, q12, q13, q21, q22, q23, q31, q32, q33;
+
+
+  // filter color data，RGB
+  wire [8:0] f_11_r, f_12_r, f_13_r, f_21_r, f_22_r, f_23_r, f_31_r, f_32_r, f_33_r;
+
+  wire [9:0] f_11_g, f_12_g, f_13_g, f_21_g, f_22_g, f_23_g, f_31_g, f_32_g, f_33_g;
+
+  wire [8:0] f_11_b, f_12_b, f_13_b, f_21_b, f_22_b, f_23_b, f_31_b, f_32_b, f_33_b;
+
+  // 选择正确行的寄存值
+
+  wire [15:0] d11, d12, d13, d21, d22, d23, d31, d32, d33;
+
+  assign d11 = (state == STATE3) ? q11 : (state == STATE1) ? q21 : q31;
+  assign d12 = (state == STATE3) ? q12 : (state == STATE1) ? q22 : q32;
+  assign d13 = (state == STATE3) ? q13 : (state == STATE1) ? q23 : q33;
+  assign d21 = (state == STATE3) ? q21 : (state == STATE1) ? q31 : q11;
+  assign d22 = (state == STATE3) ? q22 : (state == STATE1) ? q32 : q12;
+  assign d23 = (state == STATE3) ? q23 : (state == STATE1) ? q33 : q13;
+  assign d31 = (state == STATE3) ? q31 : (state == STATE1) ? q11 : q21;
+  assign d32 = (state == STATE3) ? q32 : (state == STATE1) ? q12 : q22;
+  assign d33 = (state == STATE3) ? q33 : (state == STATE1) ? q13 : q23;
+
+
+  // 从每个 BRAM 的输出数据（q11, q12 等）提取 RGB 分量
+  assign f_11_r = d11[15:11];
+  assign f_12_r = d12[15:11];
+  assign f_13_r = d13[15:11];
+  assign f_21_r = d21[15:11];
+  assign f_22_r = d22[15:11];
+  assign f_23_r = d23[15:11];
+  assign f_31_r = d31[15:11];
+  assign f_32_r = d32[15:11];
+  assign f_33_r = d33[15:11];
+
+  assign f_11_g = d11[10:5];
+  assign f_12_g = d12[10:5];
+  assign f_13_g = d13[10:5];
+  assign f_21_g = d21[10:5];
+  assign f_22_g = d22[10:5];
+  assign f_23_g = d23[10:5];
+  assign f_31_g = d31[10:5];
+  assign f_32_g = d32[10:5];
+  assign f_33_g = d33[10:5];
+
+  assign f_11_b = d11[4:0];
+  assign f_12_b = d12[4:0];
+  assign f_13_b = d13[4:0];
+  assign f_21_b = d21[4:0];
+  assign f_22_b = d22[4:0];
+  assign f_23_b = d23[4:0];
+  assign f_31_b = d31[4:0];
+  assign f_32_b = d32[4:0];
+  assign f_33_b = d33[4:0];
+
+  // Filtered RGB
+  wire [10:0] filtered_r, filtered_g, filtered_b;
+
+  assign filtered_r = (f_11_r * WA3 + f_12_r *  WB3 + f_13_r * WA3 +
+						 f_21_r * WB3 + f_22_r * WA1 + f_23_r * WB3 +
+						 f_31_r * WA3 + f_32_r *  WB3 + f_33_r * WA3) / DIV;
+
+  assign filtered_g = (f_11_g * WA3 + f_12_g * WB3 + f_13_g * WA3 +
+						 f_21_g * WB3 + f_22_g * WA1 + f_23_g * WB3 +
+						 f_31_g * WA3 + f_32_g * WB3 + f_33_g * WA3) / DIV;
+
+  assign filtered_b = (f_11_b * WA3 + f_12_b *  WB3 + f_13_b * WA3 +
+						 f_21_b * WB3 + f_22_b * WA1 + f_23_b * WB3 +
+						 f_31_b * WA3 + f_32_b *  WB3 + f_33_b * WA3) / DIV;
+
+  // RGB data after filtering
+  wire [15:0] filtered_data;
+  assign filtered_data[15:11] = filtered_r[4:0];
+  assign filtered_data[10:5] = filtered_g[5:0];
+  assign filtered_data[4:0] = filtered_b[4:0];
+
+  // output data
+  assign d_out = (flag_cursor_mid) ? filtered_data : 0;
+
+  // data ready signal for write_filter_tb
+  assign d_rdy = (wren == 0) & ((cursor == cursor3));
+
+  // connection of wire and ram
+
+  ram ram11 (
+      .address(addr11),
+      .clock(clk),
+      .data(d_in),
+      .wren(wren1),
+      .q(q11)
+  );
+
+  ram ram12 (
+      .address(addr12),
+      .clock(clk),
+      .data(d_in),
+      .wren(wren1),
+      .q(q12)
+  );
+
+  ram ram13 (
+      .address(addr13),
+      .clock(clk),
+      .data(d_in),
+      .wren(wren1),
+      .q(q13)
+  );
+
+  ram ram21 (
+      .address(addr21),
+      .clock(clk),
+      .data(d_in),
+      .wren(wren2),
+      .q(q21)
+  );
+
+  ram ram22 (
+      .address(addr22),
+      .clock(clk),
+      .data(d_in),
+      .wren(wren2),
+      .q(q22)
+  );
+
+  ram ram23 (
+      .address(addr23),
+      .clock(clk),
+      .data(d_in),
+      .wren(wren2),
+      .q(q23)
+  );
+
+  ram ram31 (
+      .address(addr31),
+      .clock(clk),
+      .data(d_in),
+      .wren(wren3),
+      .q(q31)
+  );
+
+  ram ram32 (
+      .address(addr32),
+      .clock(clk),
+      .data(d_in),
+      .wren(wren3),
+      .q(q32)
+  );
+
+  ram ram33 (
+      .address(addr33),
+      .clock(clk),
+      .data(d_in),
+      .wren(wren3),
+      .q(q33)
+  );
+endmodule

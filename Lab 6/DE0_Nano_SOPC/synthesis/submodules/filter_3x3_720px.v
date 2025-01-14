@@ -13,7 +13,7 @@ module filter_3x3_720px
 	// |WA3|WB3|WA3|
 	parameter WA3 = 0,
 			  WB3 = -1,
-			  WA1 = 2, // * 4
+			  WA1 = 4,
 
 	parameter DIV = 1
 )
@@ -134,15 +134,15 @@ module filter_3x3_720px
 	wire [10:0] filtered_r, filtered_g, filtered_b;
 	
 	assign filtered_r = (f_11_r * WA3 + f_12_r *  WB3 + f_13_r * WA3 +
-						 f_21_r * WB3 + f_22_r << WA1 + f_23_r * WB3 +
+						 f_21_r * WB3 + f_22_r * WA1 + f_23_r * WB3 +
 						 f_31_r * WA3 + f_32_r *  WB3 + f_33_r * WA3) / DIV;
 
 	assign filtered_g = (f_11_g * WA3 + f_12_g * WB3 + f_13_g * WA3 +
-						 f_21_g * WB3 + f_22_g << WA1 + f_23_g * WB3 +
+						 f_21_g * WB3 + f_22_g * WA1 + f_23_g * WB3 +
 						 f_31_g * WA3 + f_32_g * WB3 + f_33_g * WA3) / DIV;
 
 	assign filtered_b = (f_11_b * WA3 + f_12_b *  WB3 + f_13_b * WA3 +
-						 f_21_b * WB3 + f_22_b << WA1 + f_23_b * WB3 +
+						 f_21_b * WB3 + f_22_b * WA1 + f_23_b * WB3 +
 						 f_31_b * WA3 + f_32_b *  WB3 + f_33_b * WA3) / DIV; 	
 
 
